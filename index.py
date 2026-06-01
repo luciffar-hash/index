@@ -33,7 +33,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- 3. 頁面頂部 ---
-# 已放回圖片讀取，若讀取失敗將跳過以確保網站不會當機
 try:
     st.image("logo.png", width=250)
 except:
@@ -53,7 +52,7 @@ st.write("#### 🛡️ 戰略指揮模組 (Active Command Deck)")
 tools = [
     {"name": "決策之眼", "desc": "新聞搜尋", "eng": "Decision Eye", "url": "https://luciffar-thinktank.streamlit.app/"},
     {"name": "極光裁決", "desc": "YT 縮網址", "eng": "YT Linker", "url": "https://luciffar-yturl.streamlit.app/"},
-    {"name": "創世編譯器", "desc": "線上編輯器", "eng": "Python Compiler", "url": "https://luciffar-py.streamlit.app/"},
+    {"name": "創世神手", "desc": "Python 線上編譯器", "eng": "Python Compiler", "url": "https://luciffar-py.streamlit.app/"},
     {"name": "命運重塑", "desc": "樹精靈轉檔", "eng": "CSV Converter", "url": "https://luciffar-ods.streamlit.app/"}
 ]
 

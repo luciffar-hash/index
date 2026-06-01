@@ -1,4 +1,5 @@
-import streamlit as st
+# SYSTEM VERSION: 1.0.0
+# LAST UPDATED: 2026-06-01import streamlit as st
 
 # --- 1. 頁面配置 ---
 st.set_page_config(

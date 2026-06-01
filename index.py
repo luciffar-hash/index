@@ -4,21 +4,18 @@ import streamlit as st
 st.set_page_config(
     page_title="Luciffar AI: Dawnstar Command", 
     layout="centered",
-    page_icon="logo.png" # 標籤顯示 Logo
+    page_icon="⭐" # 這裡保持用 Emoji，因為 Streamlit 的 page_icon 不支援本地圖片路徑
 )
 
-# --- 2. 戰情室 CSS 樣式 ---
+# --- 2. 戰情室 CSS ---
 st.markdown("""
     <style>
     .stApp { background-color: #0A0A0A; color: #FFFFFF; }
     h1, h2, h3 { color: #FFD700; }
     
-    /* 戰略識別標籤：字體放大三倍 */
     .header-tag { 
-        background-color: #1a1a1a; 
-        padding: 20px; 
-        border-left: 6px solid #00FF41; 
-        margin-bottom: 30px;
+        background-color: #1a1a1a; padding: 20px; 
+        border-left: 6px solid #00FF41; margin-bottom: 30px;
     }
     .chinese-title { color: #00FF41; font-weight: bold; font-size: 3em; display: block; line-height: 1.2; }
     .english-title { color: #00FF41; font-size: 3em; font-family: monospace; display: block; line-height: 1.2; }
@@ -32,7 +29,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 3. 頁面頂部 ---
+# --- 3. 頁面頂部 (Logo 與 標籤) ---
+# 這裡顯示你的 logo.png
+st.image("logo.png", width=250)
+
+# 顯示你的標籤內容
 st.markdown("""
     <div class='header-tag'>
         <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>
@@ -44,7 +45,6 @@ st.markdown("""
 # --- 4. 戰略指揮面板 ---
 st.write("#### 🛡️ 戰略指揮模組 (Active Command Deck)")
 
-# 包含中文名稱的工具清單
 tools = [
     {"name": "決策之眼", "eng": "Decision Eye", "url": "https://luciffar-thinktank.streamlit.app/"},
     {"name": "創世編譯器", "eng": "Python Compiler", "url": "https://luciffar-py.streamlit.app/"},

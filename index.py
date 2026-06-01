@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(
     page_title="Luciffar AI: Dawnstar Command", 
     layout="centered",
-    page_icon="⭐"
+    page_icon="logo.png" # 標籤顯示 Logo
 )
 
 # --- 2. 戰情室 CSS 樣式 ---
@@ -13,17 +13,16 @@ st.markdown("""
     .stApp { background-color: #0A0A0A; color: #FFFFFF; }
     h1, h2, h3 { color: #FFD700; }
     
-    /* 戰略識別標籤：綠色字體與分層排版 */
+    /* 戰略識別標籤：字體放大三倍 */
     .header-tag { 
         background-color: #1a1a1a; 
-        padding: 10px; 
-        border-left: 4px solid #00FF41; 
-        margin-bottom: 20px;
-        display: block;
+        padding: 20px; 
+        border-left: 6px solid #00FF41; 
+        margin-bottom: 30px;
     }
-    .chinese-title { color: #00FF41; font-weight: bold; font-size: 1.1rem; display: block; }
-    .english-title { color: #00FF41; font-size: 0.85rem; font-family: monospace; display: block; }
-    .version-tag { color: #888; font-size: 0.75rem; margin-top: 5px; }
+    .chinese-title { color: #00FF41; font-weight: bold; font-size: 3em; display: block; line-height: 1.2; }
+    .english-title { color: #00FF41; font-size: 3em; font-family: monospace; display: block; line-height: 1.2; }
+    .version-tag { color: #888; font-size: 1.2em; margin-top: 10px; display: block; }
     
     .stButton>button { 
         width: 100%; border: 1px solid #FFD700; color: #FFD700; 
@@ -34,7 +33,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- 3. 頁面頂部 ---
-# 中文在英文上面，統一綠色字體
 st.markdown("""
     <div class='header-tag'>
         <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>
@@ -43,29 +41,22 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-try:
-    st.image("logo.png", width=250)
-except:
-    st.error("Error: logo.png not found.")
-
-st.title("Luciffar AI")
-st.subheader("Dawnstar Command")
-st.markdown("---")
-
 # --- 4. 戰略指揮面板 ---
 st.write("#### 🛡️ 戰略指揮模組 (Active Command Deck)")
 
+# 包含中文名稱的工具清單
 tools = [
-    {"name": "Decision Eye", "url": "https://luciffar-thinktank.streamlit.app/"},
-    {"name": "Python Compiler", "url": "https://luciffar-py.streamlit.app/"},
-    {"name": "YT Linker", "url": "https://luciffar-yturl.streamlit.app/"},
-    {"name": "CSV Converter", "url": "https://luciffar-ods.streamlit.app/"}
+    {"name": "決策之眼", "eng": "Decision Eye", "url": "https://luciffar-thinktank.streamlit.app/"},
+    {"name": "創世編譯器", "eng": "Python Compiler", "url": "https://luciffar-py.streamlit.app/"},
+    {"name": "極光裁決", "eng": "YT Linker", "url": "https://luciffar-yturl.streamlit.app/"},
+    {"name": "命運重塑", "eng": "CSV Converter", "url": "https://luciffar-ods.streamlit.app/"}
 ]
 
 cols = st.columns(2)
 for i, tool in enumerate(tools):
     with cols[i % 2]:
         st.write(f"### {tool['name']}")
+        st.caption(tool['eng'])
         st.link_button(f"EXECUTE", tool['url'], use_container_width=True)
         st.write("") 
 

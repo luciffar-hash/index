@@ -33,6 +33,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- 3. 頁面頂部 ---
+# 已放回圖片讀取，若讀取失敗將跳過以確保網站不會當機
+try:
+    st.image("logo.png", width=250)
+except:
+    st.write("", unsafe_allow_html=True)
+
 st.markdown("""
     <div class='header-tag'>
         <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>

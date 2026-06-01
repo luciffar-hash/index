@@ -12,13 +12,19 @@ st.markdown("""
     <style>
     .stApp { background-color: #0A0A0A; color: #FFFFFF; }
     h1, h2, h3 { color: #FFD700; }
-    /* 版號與名稱整合標籤 */
+    
+    /* 戰略識別標籤：綠色字體與分層排版 */
     .header-tag { 
-        background-color: #333; color: #FFD700; 
-        padding: 5px 15px; font-size: 0.9rem; 
-        border-left: 4px solid #FFD700; margin-bottom: 15px;
-        display: block; font-family: sans-serif;
+        background-color: #1a1a1a; 
+        padding: 10px; 
+        border-left: 4px solid #00FF41; 
+        margin-bottom: 20px;
+        display: block;
     }
+    .chinese-title { color: #00FF41; font-weight: bold; font-size: 1.1rem; display: block; }
+    .english-title { color: #00FF41; font-size: 0.85rem; font-family: monospace; display: block; }
+    .version-tag { color: #888; font-size: 0.75rem; margin-top: 5px; }
+    
     .stButton>button { 
         width: 100%; border: 1px solid #FFD700; color: #FFD700; 
         background: transparent; border-radius: 0px; margin-top: 10px;
@@ -28,17 +34,19 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- 3. 頁面頂部 ---
-# 將名稱與版號整合為一個戰略識別區塊
+# 中文在英文上面，統一綠色字體
 st.markdown("""
     <div class='header-tag'>
-        LUCIFFAR AI: DAWNSTAR COMMAND | SYSTEM VERSION: 1.0.0
+        <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>
+        <span class='english-title'>Luciffar AI: Dawnstar Command</span>
+        <span class='version-tag'>SYSTEM VERSION: 1.0.0</span>
     </div>
 """, unsafe_allow_html=True)
 
 try:
-    st.image("logo.jpg", width=250)
+    st.image("logo.png", width=250)
 except:
-    st.error("Error: logo.jpg not found.")
+    st.error("Error: logo.png not found.")
 
 st.title("Luciffar AI")
 st.subheader("Dawnstar Command")

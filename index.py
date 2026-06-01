@@ -1,6 +1,3 @@
-# SYSTEM VERSION: 1.0.0
-# LAST UPDATED: 2026-06-01
-
 import streamlit as st
 
 # --- 1. 頁面配置 ---
@@ -22,7 +19,7 @@ st.markdown("""
     }
     .chinese-title { color: #00FF41; font-weight: bold; font-size: 3em; display: block; line-height: 1.2; }
     .english-title { color: #00FF41; font-size: 3em; font-family: monospace; display: block; line-height: 1.2; }
-    .version-display { color: #888; font-size: 0.9em; margin-bottom: 10px; font-family: monospace; }
+    .version-tag { color: #888; font-size: 1.2em; margin-top: 10px; display: block; }
     
     .stButton>button { 
         width: 100%; border: 1px solid #FFD700; color: #FFD700; 
@@ -35,19 +32,18 @@ st.markdown("""
 # --- 3. 頁面頂部 ---
 st.image("logo.png", width=250)
 
-# 顯示在標題下方的版號，保持資訊同步
-st.markdown("<div class='version-display'>SYSTEM VERSION: 1.0.0</div>", unsafe_allow_html=True)
-
 st.markdown("""
     <div class='header-tag'>
         <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>
         <span class='english-title'>Luciffar AI: Dawnstar Command</span>
+        <span class='version-tag'>SYSTEM VERSION: 1.0.0</span>
     </div>
 """, unsafe_allow_html=True)
 
 # --- 4. 戰略指揮面板 ---
 st.write("#### 🛡️ 戰略指揮模組 (Active Command Deck)")
 
+# 更新後的正式工具清單
 tools = [
     {"name": "決策之眼", "desc": "新聞搜尋", "eng": "Decision Eye", "url": "https://luciffar-thinktank.streamlit.app/"},
     {"name": "極光裁決", "desc": "YT 縮網址", "eng": "YT Linker", "url": "https://luciffar-yturl.streamlit.app/"},

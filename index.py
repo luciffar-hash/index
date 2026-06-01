@@ -1,5 +1,7 @@
 # SYSTEM VERSION: 1.0.0
-# LAST UPDATED: 2026-06-01import streamlit as st
+# LAST UPDATED: 2026-06-01
+
+import streamlit as st
 
 # --- 1. 頁面配置 ---
 st.set_page_config(
@@ -31,8 +33,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- 3. 頁面頂部 ---
-st.image("logo.png", width=250)
-
 st.markdown("""
     <div class='header-tag'>
         <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>
@@ -44,7 +44,6 @@ st.markdown("""
 # --- 4. 戰略指揮面板 ---
 st.write("#### 🛡️ 戰略指揮模組 (Active Command Deck)")
 
-# 更新後的正式工具清單
 tools = [
     {"name": "決策之眼", "desc": "新聞搜尋", "eng": "Decision Eye", "url": "https://luciffar-thinktank.streamlit.app/"},
     {"name": "極光裁決", "desc": "YT 縮網址", "eng": "YT Linker", "url": "https://luciffar-yturl.streamlit.app/"},

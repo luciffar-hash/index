@@ -1,4 +1,4 @@
-# SYSTEM VERSION: 1.0.2
+# SYSTEM VERSION: 1.0.3
 # LAST UPDATED: 2026-06-04
 
 import streamlit as st
@@ -34,16 +34,20 @@ st.markdown("""
         width: 100%;
     }
     
-    /* 標題並排顯示設定 */
+    /* 標題色彩與並排設定 */
     .chinese-title { 
         color: #00FF41; font-weight: bold; font-size: 1.8em; 
         display: inline-block; vertical-align: middle; margin-right: 15px;
     }
     .english-title { 
-        color: #00FF41; font-size: 1.8em; font-family: monospace; 
+        color: #00FFFF; font-size: 1.8em; font-family: monospace; 
         display: inline-block; vertical-align: middle;
     }
-    .version-tag { color: #888; font-size: 1em; margin-top: 10px; display: block; }
+    .demo-tag { 
+        color: #FF4444; font-size: 1.2em; font-weight: bold; 
+        margin-top: 15px; display: block;
+    }
+    .version-tag { color: #888; font-size: 1em; margin-top: 5px; display: block; }
     
     .history-card { 
         background-color: #1a1a1a; padding: 20px; border-radius: 0px; 
@@ -104,7 +108,8 @@ else:
         <div class='header-tag'>
             <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>
             <span class='english-title'>Luciffar AI: Dawnstar Command</span>
-            <span class='version-tag'>SYSTEM VERSION: 1.0.2</span>
+            <span class='demo-tag'>0基礎驅動AI寫程式架站 :功能示範展示</span>
+            <span class='version-tag'>SYSTEM VERSION: 1.0.3</span>
         </div>
     """, unsafe_allow_html=True)
 

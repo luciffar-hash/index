@@ -3,6 +3,7 @@
 
 import streamlit as st
 
+# 頁面配置必須放在最上面
 st.set_page_config(page_title="本站創建歷史", layout="centered")
 
 # --- CSS 樣式 ---
@@ -42,5 +43,3 @@ for date, title, desc, link in history_data:
             <a href='{link}' style='color: #00FF41;'>查看戰報紀錄</a>
         </div>
     """, unsafe_allow_html=True)
-
-st.sidebar.link_button("返回戰情總部", "https://luciffar.streamlit.app/")

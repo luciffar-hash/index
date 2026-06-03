@@ -16,8 +16,16 @@ st.markdown("""
     .stApp { background-color: #0A0A0A; color: #FFFFFF; }
     h1, h2, h3 { color: #FFD700; }
     
-    /* 導航列超連結樣式 */
-    .sidebar-link { color: #FFD700 !important; font-weight: bold; text-decoration: none; }
+    /* 頂部常駐導航條 */
+    .nav-bar { 
+        background-color: #1a1a1a; padding: 10px; margin-bottom: 20px;
+        border-bottom: 2px solid #FFD700; text-align: left;
+    }
+    .nav-link { 
+        color: #FFD700 !important; font-weight: bold; font-size: 1.1em;
+        text-decoration: none; padding: 5px 10px; border: 1px solid #FFD700;
+    }
+    .nav-link:hover { background-color: #FFD700; color: #0A0A0A !important; }
     
     .header-tag { 
         background-color: #1a1a1a; padding: 20px; 
@@ -35,18 +43,14 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 3. 側邊導航列 ---
-with st.sidebar:
-    st.write("### 📜 戰情資訊")
-    # 黃色字體連結
-    st.markdown("[本站創建歷史](https://luciffar.streamlit.app/history) ", unsafe_allow_html=True)
-    st.markdown("""
-        <style>
-        [data-testid="stSidebar"] a { color: #FFD700 !important; font-weight: bold; }
-        </style>
-    """, unsafe_allow_html=True)
+# --- 3. 頁面頂部 ---
+# 新增：常駐導航欄
+st.markdown("""
+    <div class='nav-bar'>
+        <a href='https://luciffar.streamlit.app/history' class='nav-link'>📜 本站創建歷史</a>
+    </div>
+""", unsafe_allow_html=True)
 
-# --- 4. 頁面頂部 ---
 try:
     st.image("logo.png", width=250)
 except:
@@ -60,7 +64,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# --- 5. 戰略指揮面板 ---
+# --- 4. 戰略指揮面板 ---
 st.write("#### 🛡️ 戰略指揮模組 (Active Command Deck)")
 
 tools = [
@@ -79,6 +83,6 @@ for i, tool in enumerate(tools):
         st.link_button(f"EXECUTE", tool['url'], use_container_width=True)
         st.write("") 
 
-# --- 6. 底部狀態列 ---
+# --- 5. 底部狀態列 ---
 st.markdown("---")
 st.caption("Dawnstar Command | Operational | All Systems Online")

@@ -1,5 +1,5 @@
 # SYSTEM VERSION: 1.0.0
-# LAST UPDATED: 2026-06-01
+# LAST UPDATED: 2026-06-04
 
 import streamlit as st
 
@@ -15,6 +15,9 @@ st.markdown("""
     <style>
     .stApp { background-color: #0A0A0A; color: #FFFFFF; }
     h1, h2, h3 { color: #FFD700; }
+    
+    /* 導航列超連結樣式 */
+    .sidebar-link { color: #FFD700 !important; font-weight: bold; text-decoration: none; }
     
     .header-tag { 
         background-color: #1a1a1a; padding: 20px; 
@@ -32,7 +35,18 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 3. 頁面頂部 ---
+# --- 3. 側邊導航列 ---
+with st.sidebar:
+    st.write("### 📜 戰情資訊")
+    # 黃色字體連結
+    st.markdown("[本站創建歷史](https://luciffar.streamlit.app/history) ", unsafe_allow_html=True)
+    st.markdown("""
+        <style>
+        [data-testid="stSidebar"] a { color: #FFD700 !important; font-weight: bold; }
+        </style>
+    """, unsafe_allow_html=True)
+
+# --- 4. 頁面頂部 ---
 try:
     st.image("logo.png", width=250)
 except:
@@ -46,7 +60,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# --- 4. 戰略指揮面板 ---
+# --- 5. 戰略指揮面板 ---
 st.write("#### 🛡️ 戰略指揮模組 (Active Command Deck)")
 
 tools = [
@@ -65,6 +79,6 @@ for i, tool in enumerate(tools):
         st.link_button(f"EXECUTE", tool['url'], use_container_width=True)
         st.write("") 
 
-# --- 5. 底部狀態列 ---
+# --- 6. 底部狀態列 ---
 st.markdown("---")
 st.caption("Dawnstar Command | Operational | All Systems Online")

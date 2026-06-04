@@ -1,4 +1,4 @@
-# VERSION: 1.3.6
+# VERSION: 1.3.7
 # LAST UPDATED: 2026-06-04
 
 import streamlit as st
@@ -41,9 +41,9 @@ def show():
     * **💣 踩坑紀錄 A**：`invalid decimal literal` 閃退錯誤
         * *使用者操作*：輸入 `9√(` 並按下 `=`。
         * *白話回報 AI*：直接截圖回報程式出現 `invalid decimal literal`。
-        * *AI 自動修正**：AI 發現 Python 內部的 `eval()` 函數把算式轉換成 `9math.sqrt(`，但程式語言中數字與函式之間缺少乘號（*）。AI 引入了「正規表達式（Regex）」，讓程式自動偵測，只要數字後面黏著根號，就自動在中間補上 `*`。
+        * *AI 自動修正*：AI 發現 Python 內部的 `eval()` 函數把算式轉換成 `9math.sqrt(`，但程式語言中數字與函式之間缺少乘號（*）。AI 引入了「正規表達式（Regex）」，讓程式自動偵測，只要數字後面黏著根號，就自動在中間補上 `*`。
     * **💣 踩坑紀錄 B**：`was never closed` 語法錯誤
-        * *使用者操作*：修正了乘號，但再次輸入 `9√(` 點 `=` 依然跳出錯誤。
+        * *使用者操作*：修正了乘號，但再次輸入 `9√(` 點 `=` 依然跳出錯誤.
         * *白話回報 AI*：截圖回報 `was never closed` 錯誤訊息。
         * *AI 自動修正*：按下根號按鈕時會自動帶出左括號 `√(`，但如果使用者沒有手動輸入右括號 `)` 就直接按等於，語法不完整就會導致系統拋出錯誤。AI 馬上寫了一個「括號計數器」，在按下等於的瞬間，在算式末端自動補齊右括號。
     """, unsafe_allow_html=True)
@@ -51,93 +51,4 @@ def show():
     st.markdown("#### 🚀【第 15 ~ 20 分鐘】邏輯先後順序的黃金交織點 (v1.3.3最終穩定版)")
     st.write("原本以為萬無一失了，結果我們故意測試了一個極端狀況：輸入 `9√(`（括號內不放數字）直接按等於，程式又噴出了一串英文系統報錯。")
     st.markdown("""
-    * **白話回報 AI**：截圖反映 `math.sqrt() takes exactly one argument (0 given)`。
-    * **AI 發現關鍵**：這就像工廠品管，檢查順序錯了！之前的程式邏輯是「先檢查是不是空根號 ➔ 再補齊括號」。當字串是 `9*math.sqrt(` 時，它成功繞過了空根號檢查，隨後被自動補上括號變成空的 `9*math.sqrt()`，丟給 Python 計算就直接爆炸。
-    """, unsafe_allow_html=True)
-    
-    st.markdown("#### 🚀【第 15 ~ 20 分鐘】邏輯先後順序的黃金交織點 (v1.3.3最終穩定版)")
-    st.write("原本以為萬無一失了，結果我們故意測試了一個極端狀況：輸入 `9√(`（括號內不放數字）直接按等於，程式又噴出了一串英文系統報錯。")
-    st.markdown("""
-    * **白話回報 AI**：截圖反映 `math.sqrt() takes exactly one argument (0 given)`。
-    * **AI 發現關鍵**：這就像工廠品管，檢查順序錯了！之前的程式邏輯是「先檢查是不是空根號 ➔ 再補齊括號」。當字串是 `9*math.sqrt(` 時，它成功繞過了空根號檢查，隨後被自動補上括號變成空的 `9*math.sqrt()`，丟給 Python 計算就直接爆炸。
-    """, unsafe_allow_html=True)
-    
-    st.markdown("🏆 **最終正確的邏輯順序**：")
-    st.write("AI在第 20分鐘時調整了架構：「先補齊括號 ➔ 再檢查是否為空根號」。當字串先被補齊成 `9*math.sqrt()` 後，立刻被攔截，並跳出溫暖的繁體中文提示：「請在根號中輸入數字再進行計算！」，接著中斷執行，保護程式永遠不崩潰。")
-    
-    st.write("### 🎯 實戰心得：AI時代的「產品經理」思維")
-    st.write("這個歷程展現了AI時代最核心的競爭力：你不需要懂得程式碼的語法，但你必須具備「邏輯思維」與「觀察邊界狀況（Edge Cases）」的能力。")
-    
-    st.write("---")
-    st.markdown("### 💻 附錄：防崩潰計算機 完整原始碼 (v1.3.3)")
-    
-    calc_code = """# ====================================================================
-# 版號: v1.3.3 [官方第一個穩定發行版]
-# ====================================================================
-import tkinter as tk
-from tkinter import messagebox
-import math
-import re
-
-def on_click(button_text):
-    try:
-        current_text = entry.get()
-        if button_text == "=":
-            expression = current_text.replace("√", "math.sqrt")
-            expression = re.sub(r'(\d)math\.sqrt', r'\\1*math.sqrt', expression)
-            left_count = expression.count('(')
-            right_count = expression.count(')')
-            if left_count > right_count:
-                expression += ')' * (left_count - right_count)
-            if "math.sqrt()" in expression:
-                messagebox.showerror("提示", "請在根號中輸入數字再進行計算！")
-                return
-            result = eval(expression)
-            entry.delete(0, tk.END)
-            entry.insert(tk.END, str(result))
-        elif button_text == "C":
-            entry.delete(0, tk.END)
-        elif button_text == "←":
-            entry.delete(len(current_text)-1, tk.END)
-        elif button_text == "平方":
-            if not current_text: return
-            val = float(current_text)
-            entry.delete(0, tk.END)
-            entry.insert(tk.END, str(val ** 2))
-        elif button_text == "√":
-            entry.insert(tk.END, "√(")
-        else:
-            entry.insert(tk.END, button_text)
-    except Exception as e:
-        messagebox.showerror("錯誤", f"運算失敗: {e}")
-        entry.delete(0, tk.END)
-
-root = tk.Tk()
-root.title("簡易進階計算機v1.3.3穩定版")
-entry = tk.Entry(root, width=20, font=('Arial', 24), justify='right')
-entry.grid(row=0, column=0, columnspan=4, padx=10, pady=10)
-buttons = ['7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', '0', '.', '=', '+', '√', 'C', '←', '平方']
-row_val = 1
-col_val = 0
-for button in buttons:
-    tk.Button(root, text=button, width=8, height=2, command=lambda b=button: on_click(b)).grid(row=row_val, column=col_val, padx=2, pady=2)
-    col_val += 1
-    if col_val > 3: col_val = 0; row_val += 1
-root.mainloop()"""
-    
-    st.code(calc_code, language="python")
-    
-    # ------------------ 新增圖片讀取區 (外部連結 + 強制垂直排列 + 縮進對齊) ------------------
-    st.markdown("---")
-    st.write("### 📸 實機測試與防崩潰提示畫面")
-    
-    # 第一張圖片：舊版報錯
-    st.image("https://i.urusai.cc/GvyjJ.jpg", caption="未處理空根號前的系統報錯 (v1.3.0 舊版畫面)", use_container_width=True)
-    
-    # 第二張圖片：新版優化 (會自動在下方換行)
-    st.image("https://i.urusai.cc/SGUZN.jpg", caption="調整邏輯順序後的中文防呆提示 (v1.3.3 穩定版畫面)", use_container_width=True)
-    # ------------------------------------------------------------------
-    
-    if st.button("⬅ 返回教學區首頁"):
-        st.query_params["page"] = "tutorial"
-        st.rerun()
+    * **白話回報 AI

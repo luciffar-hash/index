@@ -120,6 +120,24 @@ root.mainloop()"""
     
     st.code(calc_code, language="python")
     
+    # ------------------ 新增圖片讀取區 (末端新增的兩個 jpg) ------------------
+    st.markdown("---")
+    st.write("### 📸 實機測試與防崩潰提示畫面")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        try:
+            st.image("images/v133_error.jpg", caption="未處理空根號前的系統報錯 (v1.3.2 舊版畫面)", use_container_width=True)
+        except:
+            st.error("⚠️ 讀取 images/v133_error.jpg 失敗，請確認檔案是否存在。")
+            
+    with col2:
+        try:
+            st.image("images/v133_success.jpg", caption="調整邏輯順序後的中文防呆提示 (v1.3.3 穩定版畫面)", use_container_width=True)
+        except:
+            st.error("⚠️ 讀取 images/v133_success.jpg 失敗，請確認檔案是否存在。")
+    # ------------------------------------------------------------------
+    
     if st.button("⬅ 返回教學區首頁"):
         st.query_params["page"] = "tutorial"
         st.rerun()

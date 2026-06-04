@@ -1,4 +1,4 @@
-# VERSION: 1.3.7
+# VERSION: 1.4.0
 # LAST UPDATED: 2026-06-04
 
 import streamlit as st
@@ -6,49 +6,23 @@ import streamlit as st
 def show():
     st.markdown("### 🎓 技術教學紀錄")
     st.markdown("<h2 style='color: #00FF41;'>⚡ 挑戰 60 秒極速 Debug：不懂程式碼沒關係，如何讓你的 Code 在沙箱中重生？</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #888;'>紀錄日期：2026-06-04 | 歷時時間：60 秒極速通關 | 開發模式：錯誤截圖驅動、零基礎除錯</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #888;'>紀錄日期：2026-06-04 | 歷時時間：60 秒極速通關 | 開發模式：錯誤訊息驅動、零基礎除錯</p>", unsafe_allow_html=True)
     st.markdown("---")
     
-    st.write("### 💡 寫在前面：在線上學 Python，卻被系統擋下來？")
-    st.write("在線上學習 Python 時，你是否遇過這種情況：明明邏輯正確，但系統卻噴出紅色警告並拒絕執行？這不是你的錯， family！而是線上沙箱環境的「安全審查機制」觸發了誤判。")
-    st.write("這篇教學的核心不在於複雜的程式邏輯，而是展示作者如何透過精準的「白話文對話」，在不閱讀任何一行程式碼的情況下，交由 AI 完成急速協作與除錯。只要你把錯誤訊息丟給 AI，它能在兩秒內讀懂錯誤、定位問題並重打正確的程式碼！")
+    st.write("### 💡 寫在前面：線上學 Python，卻被系統無情拒絕？")
+    st.write("在線上學習 Python 或測試功能時，你一定遇過這種情況：程式碼明明看著沒問題，點擊執行後系統卻突然噴出一整行讓人摸不著頭緒的紅色英文報錯。")
+    st.write("這篇教學的核心就是展示：**即使你完全不懂程式碼，如何利用純白話對話與錯誤訊息，在 60 秒內指揮 AI 精準定位問題、重打一份完美代碼！**")
     
-    st.write("### 🚨 案發現場：AI 與系統的第一次「摩擦」")
-    st.info("🔗 **實戰測試連結**：請將下方原始程式碼貼入 [Streamlit 運行環境](https://luciffar-py.streamlit.app/) 測試。")
+    st.write("### 🚨 案發現場：肉眼難以察覺的語法地雷")
+    st.info("🔗 **實戰測試環境**：本案例發生於 [路西法智庫創世神手：Python 線上編譯器](https://luciffar-py.streamlit.app/)。")
     
-    bad_code = """# 原始程式碼（執行會觸發安全機制報錯）
-# (這裡用固定變數取代了 input()，確保在任何網頁環境都能 100% 運行成功)
+    # 這裡完美還原你在線上編輯器導致 unterminated string literal 的程式碼
+    bad_code = """# 原始報錯程式碼（引號換行未閉合錯誤）
 simulated_cart_totals = [350, 1200, 800, 2500, 150]
-print("====== 購物車結帳系統 ======\n")
 
-for order_number, amount in enumerate(simulated_cart_totals, 1):
-    if amount >= 1000:
-        print(f"優惠金額: {int(amount * 0.9)}")
-    else:
-        print(f"原始金額: {amount}")"""
-    st.code(bad_code, language="python")
-    st.markdown("<p style='color: #FF4B4B; font-weight: bold;'>⚠️ 錯誤判讀：系統直接鎖定並報錯：「檢測到敏感或不支援的程式碼（如 input 等）」。</p>", unsafe_allow_html=True)
-    
-    st.markdown("---")
-    st.write("### 🚀 AI 極速協作：兩秒除錯術")
-    try:
-        st.image("images/debug_flow.jpg", caption="白話文回報與 AI 兩秒定位邏輯示意圖", use_container_width=True)
-    except:
-        st.error("⚠️ 讀取 images/debug_flow.jpg 失敗，請確認圖片是否已放入 images 資料夾中。")
-
-    st.markdown("""
-    * **🗣️ 作者指令**：直接告知 AI 系統報錯，並提供錯誤的截圖。
-    * **🧠 AI 精準判斷**：網頁過濾器不分青紅皂白，連註解文字也掃描，誤判了註解裡的 `input` 字串。
-    * **🏆 成果產出**：AI 立刻重打一份完全乾淨的程式碼，並在 60 秒內由作者完成測試並通關。
-    """, unsafe_allow_html=True)
-    
-    st.write("### ✅ AI 產出的「完美通關版」（直接複製即可運行）")
-    good_code = """# ==========================================================
-# 實戰：購物車結帳系統 (沙箱友善版)
-# ==========================================================
-# 1. 使用固定串列模擬消費金額
-simulated_cart_totals = [350, 1200, 800, 2500, 150]
-print("====== 購物車結帳系統執行中 ======\n")
+# 👇 致命崩潰點：使用單個雙引號時直接按 Enter 鍵換行了！
+print("====== 購物車結帳系統執行中 ======
+")
 
 # 2. 核心邏輯：滿 1000 元享 9 折
 for order_number, amount in enumerate(simulated_cart_totals, 1):
@@ -61,13 +35,20 @@ for order_number, amount in enumerate(simulated_cart_totals, 1):
         gap = 1000 - amount
         print(f"提示：還差 {gap} 即可享優惠。")
     print("-" * 45)
-
-print("\n系統提示：所有資料已解析完畢。")"""
-    st.code(good_code, language="python")
-    st.success("🎉 恭喜您解鎖成就：人生第一次 Debug 成功！")
+"""
+    st.code(bad_code, language="python")
     
-    # 返回對齊到 post1
+    # 顯示你在終端機看到的真實紅色錯誤訊息
+    st.markdown("""
+    <div style='background-color: #2b1d1d; border-left: 5px solid #FF4444; padding: 15px; margin-bottom: 25px;'>
+        <span style='color: #FF4444; font-weight: bold;'>❌ 執行出錯 (Terminal 輸出)：</span><br>
+        <code style='color: #FFF; font-family: monospace;'>unterminated string literal (detected at line 6) (, line 6)</code>
+    </div>
+    """, unsafe_allow_html=True)
+    
     st.markdown("---")
-    if st.button("⬅ 返回教學區首頁", key="back_to_menu_p3"):
-        st.query_params["page"] = "tutorial"
-        st.rerun()
+    st.write("### 🧠 AI 極速解析：凶手就是那條字串！")
+    
+    st.markdown("""
+    * **🔍 錯誤解讀**：`unterminated string literal` 翻譯成白話文就是**「未結束的字串字面量」**。Python 在執行到第 6 行時，看到雙引號開頭卻找不到對應的雙引號結尾，因為它被你按 Enter 隔到第 7 行去了！
+    * **💡 協作心法**：遇到這種狀況，完全不用慌張去改邏輯。直接把這一整段錯誤丟給 AI

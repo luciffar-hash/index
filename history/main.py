@@ -15,7 +15,7 @@ def show():
         ("2026/06/01", "極光裁決", "架設 YT 縮網址線上服務。", "https://www.ptt.cc/bbs/Gossiping/M.1780274581.A.B62.html"),
         ("2026/06/02", "戰略總部", "架設主網站，統合旗下所有服務。", "https://luciffar.streamlit.app/"),
         ("2026/06/03", "命運重塑", "架設國泰樹精靈 CSV 轉 ODS，雙刀流模式。", "https://www.ptt.cc/bbs/Stock/M.1780470116.A.663.html"),
-        ("2026/06/04", "新增教學區", "智庫技術教學區正式開闢！首篇教學上線：🐍 零基礎、沒改過半行Code！我如何用純白話驅動AI在20分鐘內打造「防崩潰計算機」？詳細紀錄白話溝通、極端測試與AI協作的黃金歷程。", "?page=tutorial_001")
+        ("2026/06/04", "新增教學區", "智庫技術教學區正式開闢！首篇教學上線：🐍 零基礎、沒改過半行Code！我如何用純白話驅動AI在20分鐘內打造「防崩潰計算機」？詳細紀錄白話溝通、極端測試與AI協作的黃金歷程。", "https://luciffar.streamlit.app/~/+/?page=tutorial")
     ]
     
     for date, title, desc, link in history_data:

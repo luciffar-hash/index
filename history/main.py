@@ -6,6 +6,7 @@ def show():
     st.markdown("<h1 style='text-align: center;'>📜 本站創建歷史</h1>", unsafe_allow_html=True)
     st.markdown("<p style='color: #00FF41; text-align: center; font-size: 1.5em; font-weight: bold;'>0基礎驅動AI寫程式架站</p>", unsafe_allow_html=True)
     st.write("**作者背景**：無程式語言基礎")
+    st.caption("目前版本：V1.5.0")
     st.markdown("---")
     
     # 歷史事件資料庫（最新事件已成功追加於末端）

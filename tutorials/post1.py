@@ -55,6 +55,13 @@ def show():
     * **AI 發現關鍵**：這就像工廠品管，檢查順序錯了！之前的程式邏輯是「先檢查是不是空根號 ➔ 再補齊括號」。當字串是 `9*math.sqrt(` 時，它成功繞過了空根號檢查，隨後被自動補上括號變成空的 `9*math.sqrt()`，丟給 Python 計算就直接爆炸。
     """, unsafe_allow_html=True)
     
+    st.markdown("#### 🚀【第 15 ~ 20 分鐘】邏輯先後順序的黃金交織點 (v1.3.3最終穩定版)")
+    st.write("原本以為萬無一失了，結果我們故意測試了一個極端狀況：輸入 `9√(`（括號內不放數字）直接按等於，程式又噴出了一串英文系統報錯。")
+    st.markdown("""
+    * **白話回報 AI**：截圖反映 `math.sqrt() takes exactly one argument (0 given)`。
+    * **AI 發現關鍵**：這就像工廠品管，檢查順序錯了！之前的程式邏輯是「先檢查是不是空根號 ➔ 再補齊括號」。當字串是 `9*math.sqrt(` 時，它成功繞過了空根號檢查，隨後被自動補上括號變成空的 `9*math.sqrt()`，丟給 Python 計算就直接爆炸。
+    """, unsafe_allow_html=True)
+    
     st.markdown("🏆 **最終正確的邏輯順序**：")
     st.write("AI在第 20分鐘時調整了架構：「先補齊括號 ➔ 再檢查是否為空根號」。當字串先被補齊成 `9*math.sqrt()` 後，立刻被攔截，並跳出溫暖的繁體中文提示：「請在根號中輸入數字再進行計算！」，接著中斷執行，保護程式永遠不崩潰。")
     
@@ -119,16 +126,17 @@ for button in buttons:
 root.mainloop()"""
     
     st.code(calc_code, language="python")
-# ------------------ 新增圖片讀取區 (垂直排列) ------------------
-st.markdown("---")
-st.write("### 📸 實機測試與防崩潰提示畫面")
-
-# 第一張圖：舊版報錯
-st.image("https://i.urusai.cc/GvyjJ.jpg", caption="未處理空根號前的系統報錯 (v1.3.0 舊版畫面)", use_container_width=True)
-
-# 第二張圖：新版優化 (會自動換行在第一張圖下方)
-st.image("https://i.urusai.cc/SGUZN.jpg", caption="調整邏輯順序後的中文防呆提示 (v1.3.3 穩定版畫面)", use_container_width=True)
-# ------------------------------------------------------------------
+    
+    # ------------------ 新增圖片讀取區 (外部連結 + 強制垂直排列 + 縮進對齊) ------------------
+    st.markdown("---")
+    st.write("### 📸 實機測試與防崩潰提示畫面")
+    
+    # 第一張圖片：舊版報錯
+    st.image("https://i.urusai.cc/GvyjJ.jpg", caption="未處理空根號前的系統報錯 (v1.3.0 舊版畫面)", use_container_width=True)
+    
+    # 第二張圖片：新版優化 (會自動在下方換行)
+    st.image("https://i.urusai.cc/SGUZN.jpg", caption="調整邏輯順序後的中文防呆提示 (v1.3.3 穩定版畫面)", use_container_width=True)
+    # ------------------------------------------------------------------
     
     if st.button("⬅ 返回教學區首頁"):
         st.query_params["page"] = "tutorial"

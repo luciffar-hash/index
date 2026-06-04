@@ -119,21 +119,15 @@ for button in buttons:
 root.mainloop()"""
     
     st.code(calc_code, language="python")
-    
-   # ------------------ 新增圖片讀取區 (垂直排列) ------------------
+# ------------------ 新增圖片讀取區 (垂直排列) ------------------
 st.markdown("---")
 st.write("### 📸 實機測試與防崩潰提示畫面")
 
-# 直接依序呼叫，Streamlit 會自動幫您換行排列
-try:
-    st.image("https://i.urusai.cc/GvyjJ.jpg", caption="未處理空根號前的系統報錯 (v1.3.0 舊版畫面)", use_container_width=True)
-except Exception as e:
-    st.error(f"⚠️ 讀取圖片失敗: {e}")
+# 第一張圖：舊版報錯
+st.image("https://i.urusai.cc/GvyjJ.jpg", caption="未處理空根號前的系統報錯 (v1.3.0 舊版畫面)", use_container_width=True)
 
-try:
-    st.image("https://i.urusai.cc/SGUZN.jpg", caption="調整邏輯順序後的中文防呆提示 (v1.3.3 穩定版畫面)", use_container_width=True)
-except Exception as e:
-    st.error(f"⚠️ 讀取圖片失敗: {e}")
+# 第二張圖：新版優化 (會自動換行在第一張圖下方)
+st.image("https://i.urusai.cc/SGUZN.jpg", caption="調整邏輯順序後的中文防呆提示 (v1.3.3 穩定版畫面)", use_container_width=True)
 # ------------------------------------------------------------------
     
     if st.button("⬅ 返回教學區首頁"):

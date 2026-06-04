@@ -1,12 +1,12 @@
-# VERSION: 1.4.2
-# LAST UPDATED: 2026-06-04
+# VERSION: 1.4.3
+# LAST UPDATED: 2026-06-05
 
 import streamlit as st
 
 def show():
     st.markdown("### 🎓 技術教學紀錄")
     st.markdown("<h2 style='color: #00FF41;'>⚡ 挑戰 60 秒極速 Debug：不懂程式碼沒關係，如何讓你的 Code 在沙箱中重生？</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #888;'>紀錄日期：2026-06-04 | 歷時時間：60 秒極速通關 | 開發模式：錯誤訊息驅動、零基礎除錯</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #888;'>紀錄日期：2026-06-05 | 歷時時間：60 秒極速通關 | 開發模式：錯誤訊息驅動、零基礎除錯</p>", unsafe_allow_html=True)
     st.markdown("---")
     
     st.write("### 💡 寫在前面：線上學 Python，卻被系統無情拒絕？")
@@ -16,7 +16,7 @@ def show():
     st.write("### 🚨 案發現場：肉眼難以察覺的語法地雷")
     st.info("🔗 **實戰測試環境**：本案例發生於 [路西法智庫創世神手：Python 線上編譯器](https://luciffar-py.streamlit.app/)。")
     
-    # 這裡就是故意放「會導致編譯器報錯」的程式碼，這才是正確的教材！
+    # 【教材保留】這裡故意放「會導致編譯器報錯」的程式碼，不進行變動
     bad_code = """# 原始報錯程式碼（引號換行未閉合錯誤）
 simulated_cart_totals = [350, 1200, 800, 2500, 150]
 
@@ -38,7 +38,7 @@ for order_number, amount in enumerate(simulated_cart_totals, 1):
 """
     st.code(bad_code, language="python")
     
-    # 顯示你在終端機看到的真實紅色錯誤訊息
+    # 顯示終端機看到的真實紅色錯誤訊息
     st.markdown("""
     <div style='background-color: #2b1d1d; border-left: 5px solid #FF4444; padding: 15px; margin-bottom: 25px;'>
         <span style='color: #FF4444; font-weight: bold;'>❌ 執行出錯 (Terminal 輸出)：</span><br>
@@ -54,8 +54,10 @@ for order_number, amount in enumerate(simulated_cart_totals, 1):
     """, unsafe_allow_html=True)
     
     st.write("### ✅ AI 產出的「完美通關版」（語法安全修正）")
+    
+    # 【已修正】這裡將原本會導致編譯錯誤的換行字串，修正為安全的單行與 \n 格式，並更新版號
     good_code = """# ==========================================================
-# 實戰：購物車結帳系統 (語法安全修正版)
+# 實戰：購物車結帳系統 (v2.4.7 語法安全修正版)
 # ==========================================================
 simulated_cart_totals = [350, 1200, 800, 2500, 150]
 

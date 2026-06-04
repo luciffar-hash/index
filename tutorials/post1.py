@@ -1,4 +1,4 @@
-# VERSION: 1.3.5
+# VERSION: 1.3.6
 # LAST UPDATED: 2026-06-04
 
 import streamlit as st
@@ -12,7 +12,7 @@ def show():
     st.write("### 💡 寫在前面：不會寫程式，也能當軟體設計師？")
     st.write("在過去，如果你想寫出一個有視窗介面、能按鍵盤、還具備科學運算功能的計算機，你可能要先啃完好幾本程式教科書。")
     st.write("但是，時代變了。")
-    st.write("這台進階計算機的誕生，作者本人完全沒有任何程式基礎，在開發過程中更沒有動手修改過任何一行程式碼。所有的功能擴充、Bug修正、防呆提示，完全是靠「純白話的討論與描述」來驅動AI自動產出程式碼。整個過程從一無所有到「官方穩定版（v1.3.3）」，僅僅耗時20分鐘。本文將帶你完整直擊這場「AI協作」的黃金開發歷程！")
+    st.write("這台進階計算機的誕生，作者本人完全沒有任何程式基礎，在開發過程中更沒有動手修改過任何一行程式碼。所有的功能擴充、Bug修正、防呆提示，完全是靠「純白話的討論與描述」來驅動AI自動產出程式碼。整個過程從一無所有到「官方穩定版（v1.3.3）」，僅僅耗時20分鐘。本文將帶情完整直擊這場「AI協作」的黃金開發歷程！")
     
     # ------------------ 圖片讀取區 (路徑已導向 images/) ------------------
     st.write("### 📊 AI 協作開發流程與邏輯架構")
@@ -41,7 +41,7 @@ def show():
     * **💣 踩坑紀錄 A**：`invalid decimal literal` 閃退錯誤
         * *使用者操作*：輸入 `9√(` 並按下 `=`。
         * *白話回報 AI*：直接截圖回報程式出現 `invalid decimal literal`。
-        * *AI 自動修正*：AI 發現 Python 內部的 `eval()` 函數把算式轉換成 `9math.sqrt(`，但程式語言中數字與函式之間缺少乘號（*）。AI 引入了「正規表達式（Regex）」，讓程式自動偵測，只要數字後面黏著根號，就自動在中間補上 `*`。
+        * *AI 自動修正**：AI 發現 Python 內部的 `eval()` 函數把算式轉換成 `9math.sqrt(`，但程式語言中數字與函式之間缺少乘號（*）。AI 引入了「正規表達式（Regex）」，讓程式自動偵測，只要數字後面黏著根號，就自動在中間補上 `*`。
     * **💣 踩坑紀錄 B**：`was never closed` 語法錯誤
         * *使用者操作*：修正了乘號，但再次輸入 `9√(` 點 `=` 依然跳出錯誤。
         * *白話回報 AI*：截圖回報 `was never closed` 錯誤訊息。
@@ -120,20 +120,22 @@ root.mainloop()"""
     
     st.code(calc_code, language="python")
     
-    # ------------------ 新增圖片讀取區 (末端新增的兩個 jpg) ------------------
+    # ------------------ 新增圖片讀取區 (改用 GitHub 絕對路徑確保載入) ------------------
     st.markdown("---")
     st.write("### 📸 實機測試與防崩潰提示畫面")
     
     col1, col2 = st.columns(2)
     with col1:
         try:
-            st.image("images/v133_error.jpg", caption="未處理空根號前的系統報錯 (v1.3.2 舊版畫面)", use_container_width=True)
+            # 使用絕對網址，繞過 Streamlit Cloud 雲端相對路徑失效的問題
+            st.image("https://raw.githubusercontent.com/luciffar-hash/index/main/images/v133_error.jpg", caption="未處理空根號前的系統報錯 (v1.3.2 舊版畫面)", use_container_width=True)
         except:
             st.error("⚠️ 讀取 images/v133_error.jpg 失敗，請確認檔案是否存在。")
             
     with col2:
         try:
-            st.image("images/v133_success.jpg", caption="調整邏輯順序後的中文防呆提示 (v1.3.3 穩定版畫面)", use_container_width=True)
+            # 使用絕對網址，繞過 Streamlit Cloud 雲端相對路徑失效的問題
+            st.image("https://raw.githubusercontent.com/luciffar-hash/index/main/images/v133_success.jpg", caption="調整邏輯順序後的中文防呆提示 (v1.3.3 穩定版畫面)", use_container_width=True)
         except:
             st.error("⚠️ 讀取 images/v133_success.jpg 失敗，請確認檔案是否存在。")
     # ------------------------------------------------------------------

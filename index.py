@@ -106,4 +106,29 @@ else:
 
     st.markdown("""
         <div class='header-tag'>
-            <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮
+            <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>
+            <span class='english-title'>Luciffar AI: Dawnstar Command</span>
+            <span class='demo-tag'>0基礎驅動AI寫程式架站 :功能示範展示</span>
+            <span class='version-tag'>SYSTEM VERSION: 1.0.3</span>
+        </div>
+    """, unsafe_allow_html=True)
+
+    st.write("#### 🛡️ 戰略指揮模組 (Active Command Deck)")
+    tools = [
+        {"name": "決策之眼", "desc": "新聞搜尋", "eng": "Decision Eye", "url": "https://luciffar-thinktank.streamlit.app/"},
+        {"name": "極光裁決", "desc": "YT 縮網址", "eng": "YT Linker", "url": "https://luciffar-yturl.streamlit.app/"},
+        {"name": "創世神手", "desc": "Python 線上編譯器", "eng": "Python Compiler", "url": "https://luciffar-py.streamlit.app/"},
+        {"name": "命運重塑", "desc": "樹精靈轉檔", "eng": "CSV Converter", "url": "https://luciffar-ods.streamlit.app/"}
+    ]
+
+    cols = st.columns(2)
+    for i, tool in enumerate(tools):
+        with cols[i % 2]:
+            st.write(f"### {tool['name']}")
+            st.write(f"*{tool['desc']}*")
+            st.caption(tool['eng'])
+            st.link_button(f"EXECUTE", tool['url'], use_container_width=True)
+            st.write("") 
+
+st.markdown("---")
+st.caption("Dawnstar Command | Operational | All Systems Online")

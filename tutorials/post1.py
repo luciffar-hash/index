@@ -5,6 +5,8 @@ import streamlit as st
 
 def show():
     st.markdown("<h2 style='color: #00FF41; text-align: center;'>🎓 智庫技術教學區</h2>", unsafe_allow_html=True)
+    # 僅在標題下方新增此行以呈現目前版號，其餘地方完全沒動
+    st.markdown("<p style='color: #00FF41; text-align: center; font-size: 0.85rem;'>Version: 2.0.0</p>", unsafe_allow_html=True)
     st.markdown("<p style='color: #888; text-align: center;'>人類負責邏輯與體驗，AI 負責技術與產出</p>", unsafe_allow_html=True)
     st.markdown("---")
 

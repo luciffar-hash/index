@@ -51,4 +51,37 @@ for order_number, amount in enumerate(simulated_cart_totals, 1):
     
     st.markdown("""
     * **🔍 錯誤解讀**：`unterminated string literal` 翻譯成白話文就是**「未結束的字串字面量」**。Python 在執行到第 6 行時，看到雙引號開頭卻找不到對應的雙引號結尾，因為它被你按 Enter 隔到第 7 行去了！
-    * **💡 協作心法**：遇到這種狀況，完全不用慌張去改邏輯。直接把這一整段錯誤丟給 AI
+    * **💡 協作心法**：遇到這種狀況，完全不用慌張去改邏輯。直接把這一整段錯誤丟給 AI，它會在 2 秒內看出你的引號漏了或換行錯了，並主動補好它。
+    """, unsafe_allow_html=True)
+    
+    st.write("### ✅ AI 產出的「完美通關版」（語法修正、直接運行）")
+    good_code = """# ==========================================================
+# 實戰：購物車結帳系統 (語法安全修正版)
+# ==========================================================
+# 1. 使用固定串列模擬消費金額
+simulated_cart_totals = [350, 1200, 800, 2500, 150]
+
+# ✅ 修正方案：改用 \\n 處理換行，確保字串在同一行完美閉合
+print("====== 購物車結帳系統執行中 ======\\n")
+
+# 2. 核心邏輯：滿 1000 元享 9 折
+for order_number, amount in enumerate(simulated_cart_totals, 1):
+    print(f"正在處理第 {order_number} 筆訂單... 原始金額: {amount}")
+    
+    if amount >= 1000:
+        discounted_amount = int(amount * 0.9)
+        print(f"🎉 恭喜！觸發優惠！折扣後金額: {discounted_amount}")
+    else:
+        gap = 1000 - amount
+        print(f"提示：還差 {gap} 即可享優惠。")
+    print("-" * 45)
+
+print("\\n系統提示：所有資料已解析完畢。")"""
+    st.code(good_code, language="python")
+    st.success("🎉 恭喜您解鎖成就：60秒內讓程式碼完美重生！")
+    
+    # 點擊返回由 post1.py 掌管的教學首頁
+    st.markdown("---")
+    if st.button("⬅ 返回教學區首頁", key="back_to_menu_p3"):
+        st.query_params["page"] = "tutorial"
+        st.rerun()

@@ -1,4 +1,4 @@
-# VERSION: 1.4.3
+# VERSION: 1.4.4
 # LAST UPDATED: 2026-06-05
 
 import streamlit as st
@@ -38,24 +38,24 @@ for order_number, amount in enumerate(simulated_cart_totals, 1):
 """
     st.code(bad_code, language="python")
     
-    # 顯示終端機看到的真實紅色錯誤訊息
+    # ✅ 已修正：配合系統畫面的輸出結果，改為自訂的語法錯誤提示
     st.markdown("""
     <div style='background-color: #2b1d1d; border-left: 5px solid #FF4444; padding: 15px; margin-bottom: 25px;'>
-        <span style='color: #FF4444; font-weight: bold;'>❌ 執行出錯 (Terminal 輸出)：</span><br>
-        <code style='color: #FFF; font-family: monospace;'>unterminated string literal (detected at line 5)</code>
+        <span style='color: #FF4444; font-weight: bold;'>⚠️ 系統提示：</span>
+        <code style='color: #FFF; font-family: monospace;'>語法錯誤，請檢查程式碼結構。</code>
     </div>
     """, unsafe_allow_html=True)
     
     st.markdown("---")
     st.write("### 🧠 AI 極速解析：凶手就是那條字串！")
     st.markdown("""
-    * **🔍 錯誤解讀**：`unterminated string literal` 代表**「未結束的字串」**。Python 看到單個雙引號開頭卻找不到結尾，因為它被隔到下一行去了。
+    * **🔍 錯誤解讀**：當編譯器顯示「語法錯誤」時，代表程式碼的結構讓 Python 看不懂了。在本次案例中，是因為在雙引號尚未配對閉合前就直接換行，導致語法解析崩潰。
     * **💡 協作心法**：直接把這一整段錯誤丟給 AI，它會在 2 秒內看出你的引號換行錯了，並主動補好它。
     """, unsafe_allow_html=True)
     
     st.write("### ✅ AI 產出的「完美通關版」（語法安全修正）")
     
-    # 【已修正】這裡將原本會導致編譯錯誤的換行字串，修正為安全的單行與 \n 格式，並更新版號
+    # 【已修正】完美通關版程式碼，維持 v2.4.7 語法安全修正版
     good_code = """# ==========================================================
 # 實戰：購物車結帳系統 (v2.4.7 語法安全修正版)
 # ==========================================================

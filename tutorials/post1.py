@@ -128,7 +128,7 @@ root.mainloop()"""
     with col1:
         try:
             # 使用絕對網址，繞過 Streamlit Cloud 雲端相對路徑失效的問題
-            st.image("https://raw.githubusercontent.com/luciffar-hash/index/main/images/v133_error.jpg", caption="未處理空根號前的系統報錯 (v1.3.2 舊版畫面)", use_container_width=True)
+            st.image("https://raw.githubusercontent.com/luciffar-hash/index/main/images/v133_error.jpg", caption="未處理空根號前的系統報錯 (v1.3.0 舊版畫面)", use_container_width=True)
         except:
             st.error("⚠️ 讀取 images/v133_error.jpg 失敗，請確認檔案是否存在。")
             

@@ -1,4 +1,4 @@
-# VERSION: 1.4.0
+# VERSION: 1.4.2
 # LAST UPDATED: 2026-06-04
 
 import streamlit as st
@@ -10,13 +10,13 @@ def show():
     st.markdown("---")
     
     st.write("### 💡 寫在前面：線上學 Python，卻被系統無情拒絕？")
-    st.write("在線上學習 Python 或測試功能時，你一定遇過這種情況：程式碼明明看著沒問題，點擊執行後系統卻突然噴出一整行讓人摸不著頭緒的紅色英文報錯。")
+    st.write("在線上學習 Python 或測試功能時，你一定遇過這種情況：程式碼明明看著沒問題，點擊執行後系統卻突然噴出一整行紅色英文報錯。")
     st.write("這篇教學的核心就是展示：**即使你完全不懂程式碼，如何利用純白話對話與錯誤訊息，在 60 秒內指揮 AI 精準定位問題、重打一份完美代碼！**")
     
     st.write("### 🚨 案發現場：肉眼難以察覺的語法地雷")
     st.info("🔗 **實戰測試環境**：本案例發生於 [路西法智庫創世神手：Python 線上編譯器](https://luciffar-py.streamlit.app/)。")
     
-    # 這裡完美還原你在線上編輯器導致 unterminated string literal 的程式碼
+    # 這裡就是故意放「會導致編譯器報錯」的程式碼，這才是正確的教材！
     bad_code = """# 原始報錯程式碼（引號換行未閉合錯誤）
 simulated_cart_totals = [350, 1200, 800, 2500, 150]
 
@@ -42,32 +42,28 @@ for order_number, amount in enumerate(simulated_cart_totals, 1):
     st.markdown("""
     <div style='background-color: #2b1d1d; border-left: 5px solid #FF4444; padding: 15px; margin-bottom: 25px;'>
         <span style='color: #FF4444; font-weight: bold;'>❌ 執行出錯 (Terminal 輸出)：</span><br>
-        <code style='color: #FFF; font-family: monospace;'>unterminated string literal (detected at line 6) (, line 6)</code>
+        <code style='color: #FFF; font-family: monospace;'>unterminated string literal (detected at line 5)</code>
     </div>
     """, unsafe_allow_html=True)
     
     st.markdown("---")
     st.write("### 🧠 AI 極速解析：凶手就是那條字串！")
-    
     st.markdown("""
-    * **🔍 錯誤解讀**：`unterminated string literal` 翻譯成白話文就是**「未結束的字串字面量」**。Python 在執行到第 6 行時，看到雙引號開頭卻找不到對應的雙引號結尾，因為它被你按 Enter 隔到第 7 行去了！
-    * **💡 協作心法**：遇到這種狀況，完全不用慌張去改邏輯。直接把這一整段錯誤丟給 AI，它會在 2 秒內看出你的引號漏了或換行錯了，並主動補好它。
+    * **🔍 錯誤解讀**：`unterminated string literal` 代表**「未結束的字串」**。Python 看到單個雙引號開頭卻找不到結尾，因為它被隔到下一行去了。
+    * **💡 協作心法**：直接把這一整段錯誤丟給 AI，它會在 2 秒內看出你的引號換行錯了，並主動補好它。
     """, unsafe_allow_html=True)
     
-    st.write("### ✅ AI 產出的「完美通關版」（語法修正、直接運行）")
+    st.write("### ✅ AI 產出的「完美通關版」（語法安全修正）")
     good_code = """# ==========================================================
 # 實戰：購物車結帳系統 (語法安全修正版)
 # ==========================================================
-# 1. 使用固定串列模擬消費金額
 simulated_cart_totals = [350, 1200, 800, 2500, 150]
 
 # ✅ 修正方案：改用 \\n 處理換行，確保字串在同一行完美閉合
 print("====== 購物車結帳系統執行中 ======\\n")
 
-# 2. 核心邏輯：滿 1000 元享 9 折
 for order_number, amount in enumerate(simulated_cart_totals, 1):
     print(f"正在處理第 {order_number} 筆訂單... 原始金額: {amount}")
-    
     if amount >= 1000:
         discounted_amount = int(amount * 0.9)
         print(f"🎉 恭喜！觸發優惠！折扣後金額: {discounted_amount}")
@@ -75,12 +71,10 @@ for order_number, amount in enumerate(simulated_cart_totals, 1):
         gap = 1000 - amount
         print(f"提示：還差 {gap} 即可享優惠。")
     print("-" * 45)
-
-print("\\n系統提示：所有資料已解析完畢。")"""
+"""
     st.code(good_code, language="python")
     st.success("🎉 恭喜您解鎖成就：60秒內讓程式碼完美重生！")
     
-    # 點擊返回由 post1.py 掌管的教學首頁
     st.markdown("---")
     if st.button("⬅ 返回教學區首頁", key="back_to_menu_p3"):
         st.query_params["page"] = "tutorial"

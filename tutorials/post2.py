@@ -5,95 +5,93 @@ import streamlit as st
 
 def show():
     st.markdown("### 🎓 技術教學紀錄")
-    st.markdown("<h2 style='color: #00FF41;'>⚡ 挑戰 60 秒極速 Debug：不懂程式碼沒關係，如何讓你的 Code 在沙箱中重生？</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #888;'>紀錄日期：2026-06-04 | 歷時時間：60 秒極速通關 | 開發模式：錯誤截圖驅動、零基礎除錯</p>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color: #00FF41;'>🐍 零基礎、沒改過半行Code！我如何用純白話驅動AI 在20分鐘內打造「防崩潰計算機」？</h2>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #888;'>紀錄日期：2026-06-04 | 歷時時間：20 分鐘黃金除錯記 | 開發模式：零程式基礎、純白話驅動</p>", unsafe_allow_html=True)
     st.markdown("---")
     
-    st.write("### 💡 寫在前面：在線上學 Python，卻被系統擋下來？")
-    st.write("在線上學習 Python 時，你是否遇過這種情況：明明邏輯正確，但系統卻噴出紅色警告並拒絕執行？")
-    st.write("這不是你的錯， family！而是線上沙箱環境的「安全審查機制」觸發了誤判。")
-    st.write("這篇教學的核心不在於複雜的程式邏輯，而是展示作者如何透過精準的「白話文對話」，在不閱讀任何一行程式碼的情況下，交由 AI 完成急速協作與除錯。只要你把錯誤訊息丟給 AI，它能在兩秒內讀懂錯誤、定位問題並重打正確的程式碼！")
+    st.write("### 💡 寫在前面：不會寫程式，也能當軟體設計師？")
+    st.write("在過去，如果你想寫出一個有視窗介面、能按鍵盤、還具備科學運算功能的計算機，你可能要先啃完好幾本程式教科書。但是，時代變了。")
+    st.write("這台進階計算機的誕生，作者本人完全沒有任何程式基礎，在開發過程中更沒有動手修改過任何一行程式碼。所有的功能擴充、Bug修正、防呆提示，完全是靠「純白話的討論與描述」來驅動AI自動產出程式碼。整個過程從一無所有到「官方穩定版（v1.3.3）」，僅僅耗時20分鐘。本文將帶你完整直擊這場「AI協作」的黃金開發歷程！")
     
-    st.write("### 🚨 案發現場：AI 與系統的第一次「摩擦」")
-    st.write("我們在嘗試運行購物車系統時，由於在註解中無意間提到了敏感詞，觸發了沙箱的防禦機制：")
-    
-    # 呼籲使用者去運行的區塊
-    st.info("🔗 **實戰測試連結**：請將下方原始程式碼貼入 [Streamlit 運行環境](https://luciffar-py.streamlit.app/) 並測試。")
-    
-    # 原始程式碼區塊
-    bad_code = """# 原始程式碼（執行會觸發安全機制報錯）
-# (這裡用固定變數取代了 input()，確保在任何網頁環境都能 100% 運行成功)
-simulated_cart_totals = [350, 1200, 800, 2500, 150]
-print("====== 購物車結帳系統 ======\n")
-
-for order_number, amount in enumerate(simulated_cart_totals, 1):
-    if amount >= 1000:
-        print(f"優惠金額: {int(amount * 0.9)}")
-    else:
-        print(f"原始金額: {amount}")"""
-    
-    st.code(bad_code, language="python")
-    st.markdown("<p style='color: #FF4B4B; font-weight: bold;'>⚠️ 錯誤判讀：系統直接鎖定並報錯：「檢測到敏感或不支援的程式碼（如 input 等）」。</p>", unsafe_allow_html=True)
-    
-    st.markdown("---")
-    st.write("### 🚀 AI 極速協作：兩秒除錯術")
-    st.write("這就是本次教學的精髓——「白話文對話」。作者無需具備深厚的程式功功底，只需將錯誤截圖丟給 AI，並用口語說明狀況。")
-    
-    # ------------------ 圖片讀取區 (路徑已導向 images/) ------------------
+    st.write("### 📊 AI 協作開發流程與邏輯架構")
     try:
-        # 預留給除錯流程或對話截圖
-        st.image("images/debug_flow.jpg", caption="白話文回報與 AI 兩秒定位邏輯示意圖", use_container_width=True)
+        st.image("images/ai_flow.jpg", caption="白話驅動 AI 與邊界狀況防禦邏輯演進圖", use_container_width=True)
     except:
-        st.error("⚠️ 讀取 images/debug_flow.jpg 失敗，請確認圖片是否已放入 images 資料夾中。")
-    # ------------------------------------------------------------------
+        st.error("⚠️ 讀取 images/ai_flow.jpg 失敗，請確認圖片是否已放入 images 資料夾中。")
+    st.markdown("---")
 
+    st.write("### ⏱️ 核心開發時間線：白話溝通與AI的精準火花")
     st.markdown("""
-    * **🗣️ 作者指令**：直接告知 AI 系統報錯，並提供錯誤的截圖。
-    * **🧠 AI 精準判斷**：兩秒內精準定位關鍵問題 —— 網頁過濾器不分青紅皂白，連註解文字也掃描，誤判了註解裡的 `input` 字串。
-    * **🏆 成果產出**：AI 立刻重打一份完全乾淨的程式碼，並在 60 秒內由作者完成測試並通關。
+    * **🛠️【第 1 ~ 5 分鐘】誕生與鍵盤衝突 (v1.1.0)**：解決輸入 1 變成 11 的重複監聽 Bug。
+    * **💥【第 5 ~ 15 分鐘】功能擴充與邊界測試 (v1.3.1 ~ v1.3.2)**：修正 `invalid decimal literal` 與未閉合括號錯誤。
+    * **🚀【第 15 ~ 20 分鐘】邏輯先後順序的黃金交織點 (v1.3.3 穩定版)**：調整為「先補齊括號 ➔ 再檢查是否為空根號」，完美攔截崩潰。
     """, unsafe_allow_html=True)
     
-    st.markdown("---")
-    st.write("### ✅ AI 產出的「完美通關版」（直接複製即可運行）")
-    st.write("這份程式碼是由 AI 針對錯誤訊息即時重打，拿掉了註解中的敏感字眼，確保完全符合沙箱安全標準：")
+    st.write("### 💻 附錄：防崩潰計算機 完整原始碼 (v1.3.3)")
     
-    # 完美通關版程式碼區塊
-    good_code = """# ==========================================================
-# 實戰：購物車結帳系統 (沙箱友善版)
-# ==========================================================
-# 1. 使用固定串列模擬消費金額
-simulated_cart_totals = [350, 1200, 800, 2500, 150]
-print("====== 購物車結帳系統執行中 ======\n")
+    calc_code = """# ====================================================================
+# 版號: v1.3.3 [官方第一個穩定發行版]
+# ====================================================================
+import tkinter as tk
+from tkinter import messagebox
+import math
+import re
 
-# 2. 核心邏輯：滿 1000 元享 9 折
-for order_number, amount in enumerate(simulated_cart_totals, 1):
-    print(f"正在處理第 {order_number} 筆訂單... 原始金額: {amount}")
-    
-    if amount >= 1000:
-        discounted_amount = int(amount * 0.9)
-        print(f"🎉 恭喜！觸發優惠！折扣後金額: {discounted_amount}")
-    else:
-        gap = 1000 - amount
-        print(f"提示：還差 {gap} 即可享優惠。")
-    print("-" * 45)
+def on_click(button_text):
+    try:
+        current_text = entry.get()
+        if button_text == "=":
+            expression = current_text.replace("√", "math.sqrt")
+            expression = re.sub(r'(\d)math\.sqrt', r'\\1*math.sqrt', expression)
+            left_count = expression.count('(')
+            right_count = expression.count(')')
+            if left_count > right_count:
+                expression += ')' * (left_count - right_count)
+            if "math.sqrt()" in expression:
+                messagebox.showerror("提示", "請在根號中輸入數字再進行計算！")
+                return
+            result = eval(expression)
+            entry.delete(0, tk.END)
+            entry.insert(tk.END, str(result))
+        elif button_text == "C":
+            entry.delete(0, tk.END)
+        elif button_text == "←":
+            entry.delete(len(current_text)-1, tk.END)
+        elif button_text == "平方":
+            if not current_text: return
+            val = float(current_text)
+            entry.delete(0, tk.END)
+            entry.insert(tk.END, str(val ** 2))
+        elif button_text == "√":
+            entry.insert(tk.END, "√(")
+        else:
+            entry.insert(tk.END, button_text)
+    except Exception as e:
+        messagebox.showerror("錯誤", f"運算失敗: {e}")
+        entry.delete(0, tk.END)
 
-print("\n系統提示：所有資料已解析完畢。")"""
+root = tk.Tk()
+root.title("簡易進階計算機v1.3.3穩定版")
+entry = tk.Entry(root, width=20, font=('Arial', 24), justify='right')
+entry.grid(row=0, column=0, columnspan=4, padx=10, pady=10)
+buttons = ['7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', '0', '.', '=', '+', '√', 'C', '←', '平方']
+row_val = 1
+col_val = 0
+for button in buttons:
+    tk.Button(root, text=button, width=8, height=2, command=lambda b=button: on_click(b)).grid(row=row_val, column=col_val, padx=2, pady=2)
+    col_val += 1
+    if col_val > 3: col_val = 0; row_val += 1
+root.mainloop()"""
     
-    st.code(good_code, language="python")
-    st.success("🎉 恭喜您解鎖成就：人生第一次 Debug 成功！")
+    st.code(calc_code, language="python")
     
     st.markdown("---")
-    st.write("### 💡 給學習者的關鍵心法")
-    st.markdown("""
-    1. **白話溝通勝過專業術語**：當遇到程式問題時，只要能清楚說明「發生什麼錯誤」或提供截圖，AI 就能取代人工去閱讀並理解底層程式碼。
-    2. **信任 AI 的除錯速度**：不要自己糾結在幾百行程式碼中尋找錯誤，將錯誤訊息「餵」給 AI，它能在兩秒內為你重寫一份更安全的程式碼。
-    3. **保持資料與邏輯分離**：學會使用 AI 提供的「固定變數賦值」技巧，這是對抗網頁沙箱限制的最強武器。
-    """, unsafe_allow_html=True)
+    st.write("### 📸 實機測試與防崩潰提示畫面")
+    st.image("https://i.urusai.cc/GvyjJ.jpg", caption="未處理空根號前的系統報錯 (v1.3.0 舊版畫面)", use_container_width=True)
+    st.image("https://i.urusai.cc/SGUZN.jpg", caption="調整邏輯順序後的中文防呆提示 (v1.3.3 穩定版畫面)", use_container_width=True)
     
-    st.write("這次 60 秒的極速 Debug 證明：不懂程式碼沒關係，只要你會「跟 AI 聊天」，你就是最強的除錯大師！")
-    
-    # 底部統一的返回主頁按鈕
+    # 返回對齊到 post1
     st.markdown("---")
-    if st.button("⬅ 返回教學區首頁"):
+    if st.button("⬅ 返回教學區首頁", key="back_to_menu_p2"):
         st.query_params["page"] = "tutorial"
         st.rerun()

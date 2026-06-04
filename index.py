@@ -1,5 +1,5 @@
-# VERSION: 1.1.0
-# LAST UPDATED: 2026-06-04
+# VERSION: 1.1.1
+# LAST UPDATED: 2026-06-05
 
 import streamlit as st
 
@@ -118,7 +118,7 @@ else:
             <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>
             <span class='english-title'>Luciffar AI: Dawnstar Command</span>
             <span class='demo-tag'>0基礎驅動AI寫程式架站 :功能示範展示</span>
-            <span class='version-tag'>SYSTEM VERSION: 1.0.4</span>
+            <span class='version-tag'>SYSTEM VERSION: 1.1.1</span>
         </div>
     """, unsafe_allow_html=True)
 

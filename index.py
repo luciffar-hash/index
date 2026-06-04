@@ -1,4 +1,4 @@
-# SYSTEM VERSION: 1.0.4
+# VERSION: 1.1.0
 # LAST UPDATED: 2026-06-04
 
 import streamlit as st
@@ -9,10 +9,21 @@ try:
 except ImportError:
     history_mod = None
 
+# 依照你的邏輯：post1 為教學總目錄，post2, post3 為後續文章
 try:
     import tutorials.post1 as post1
 except ImportError:
     post1 = None
+
+try:
+    import tutorials.post2 as post2
+except ImportError:
+    post2 = None
+
+try:
+    import tutorials.post3 as post3
+except ImportError:
+    post3 = None
 
 # --- 1. 頁面配置 ---
 st.set_page_config(
@@ -56,7 +67,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 3. 頂部導航欄 (主邏輯：往右擴充新功能只需在此加 A 標籤) ---
+# --- 3. 頂部導航欄 ---
 st.markdown("""
     <div class='nav-bar'>
         <a href='?page=main' class='nav-link'>🛸 戰略總部</a>
@@ -67,29 +78,26 @@ st.markdown("""
 
 current_page = st.query_params.get("page", "main")
 
-# ================= 分支：教學區主頁 =================
+# ================= 分支：教學區主頁 (移交給 post1.py 控管) =================
 if current_page == "tutorial":
-    st.markdown("<h1 style='text-align: center; color: #FFD700;'>🎓 智庫技術教學區</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #00FF41; text-align: center; font-size: 1.2em;'>人類負責邏輯與體驗，AI負責技術與產出</p>", unsafe_allow_html=True)
-    st.markdown("---")
-    
-    st.markdown("""
-        <div class='tutorial-card'>
-            <span style='color: #FFD700; font-weight: bold; font-size: 1.3em;'>🐍 零基礎、沒改過半行Code！我如何用純白話驅動AI 在20分鐘內打造「防崩潰計算機」？</span><br>
-            <span style='color: #888; font-size: 0.9em;'>發布日期：2026-06-04 | 分類：AI 協作實戰</span>
-            <p style='margin-top: 10px; margin-bottom: 15px; line-height: 1.6; color: #CCCCCC;'>
-                不會寫程式，也能當軟體設計師？本文將帶你完整直擊這場「AI協作」的黃金開發歷程！看作者如何用純白話討論...
-            </p>
-            <a href='?page=tutorial_001' style='color: #00FFFF; text-decoration: none; font-weight: bold;'>[ 點擊閱讀全文 & 複製原始碼 ]</a>
-        </div>
-    """, unsafe_allow_html=True)
-
-# ================= 分支：教學文章內頁分流 =================
-elif current_page == "tutorial_001":
     if post1 is not None:
         post1.show()
     else:
-        st.error("找不到教學文章檔案，請確認 tutorials/post1.py 是否存在。")
+        st.error("找不到教學總目錄檔案，請確認 tutorials/post1.py 是否存在。")
+
+# ================= 分支：第一篇教學文章 (防崩潰計算機) =================
+elif current_page == "post2":
+    if post2 is not None:
+        post2.show()
+    else:
+        st.error("找不到教學文章檔案，請確認 tutorials/post2.py 是否存在。")
+
+# ================= 分支：第二篇教學文章 (60秒極速Debug) =================
+elif current_page == "post3":
+    if post3 is not None:
+        post3.show()
+    else:
+        st.error("找不到教學文章檔案，請確認 tutorials/post3.py 是否存在。")
 
 # ================= 分支：歷史 (已移出至外部檔案) =================
 elif current_page == "history":

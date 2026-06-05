@@ -1,128 +1,140 @@
-# VERSION: 1.1.1
+# VERSION: 1.2.0
 # LAST UPDATED: 2026-06-05
 
 import streamlit as st
 
-# ================= 動態掛載外部獨立模組 =================
-try:
-    import history.main as history_mod
-except ImportError:
-    history_mod = None
-
-# 依照你的邏輯：post1 為教學總目錄，post2, post3 為後續文章
-try:
-    import tutorials.post1 as post1
-except ImportError:
-    post1 = None
-
-try:
-    import tutorials.post2 as post2
-except ImportError:
-    post2 = None
-
-try:
-    import tutorials.post3 as post3
-except ImportError:
-    post3 = None
-
-# --- 1. 頁面配置 ---
+# ================= 🛡️ 1. 頁面基本配置 =================
 st.set_page_config(
     page_title="Luciffar AI: Dawnstar Command", 
     layout="centered",
     page_icon="⭐"
 )
 
-# --- 2. 戰情室 全域 CSS ---
+# ================= 📦 2. 安全動態掛載外部獨立模組 =================
+def safe_import(module_path):
+    """安全匯入模組，區分檔案不存在或內部程式碼錯誤"""
+    try:
+        return __import__(module_path, fromlist=['*'])
+    except ModuleNotFoundError:
+        return None
+    except Exception as e:
+        st.error(f"⚠️ 模組 `{module_path}` 載入失敗，內部程式碼存在錯誤：\n`{str(e)}`")
+        return None
+
+history_mod = safe_import("history.main")
+post1 = safe_import("tutorials.post1")
+post2 = safe_import("tutorials.post2")
+post3 = safe_import("tutorials.post3")
+
+# --- 新增：小工具控制模組 ---
+tool001_mod = safe_import("tool.tool001")
+
+# ================= 🎨 3. 戰情室全域 CSS 最佳化 =================
 st.markdown("""
     <style>
+    /* 全域背景與文字底色 */
     .stApp { background-color: #0A0A0A; color: #FFFFFF; }
     h1, h2, h3 { color: #FFD700; }
     
     /* 頂部常駐導航條 */
     .nav-bar { 
-        background-color: #1a1a1a; padding: 10px; margin-bottom: 20px;
+        background-color: #1a1a1a; padding: 12px; margin-bottom: 25px;
         border-bottom: 2px solid #FFD700; text-align: left;
     }
     .nav-link { 
-        color: #FFD700 !important; font-weight: bold; font-size: 1.1em;
-        text-decoration: none; padding: 5px 10px; border: 1px solid #FFD700;
+        color: #FFD700 !important; font-weight: bold; font-size: 1.05em;
+        text-decoration: none; padding: 6px 14px; border: 1px solid #FFD700;
         background-color: #0A0A0A; margin-right: 10px; display: inline-block;
+        transition: all 0.3s ease;
     }
     .nav-link:hover { background-color: #FFD700; color: #0A0A0A !important; }
     
+    /* 戰術大標題外殼 */
     .header-tag { background-color: #1a1a1a; padding: 20px; border-left: 6px solid #00FF41; margin-bottom: 30px; width: 100%; }
     .chinese-title { color: #00FF41; font-weight: bold; font-size: 1.8em; display: inline-block; vertical-align: middle; margin-right: 15px; }
     .english-title { color: #00FFFF; font-size: 1.8em; font-family: monospace; display: inline-block; vertical-align: middle; }
     .demo-tag { color: #FF4444; font-size: 1.2em; font-weight: bold; margin-top: 15px; display: block; }
     .version-tag { color: #888; font-size: 1em; margin-top: 5px; display: block; }
     
-    /* 模組卡片通用樣式 */
-    .history-card, .tutorial-card { 
-        background-color: #1a1a1a; padding: 20px; border-radius: 0px; 
-        border-left: 5px solid #FFD700; margin-bottom: 20px;
+    /* 戰略指揮卡片按鈕優化 */
+    .stButton>button { 
+        width: 100%; border: 1px solid #FFD700 !important; color: #FFD700 !important; 
+        background: transparent !important; border-radius: 0px !important; margin-top: 10px;
+        transition: all 0.3s ease;
     }
-    
-    .stButton>button { width: 100%; border: 1px solid #FFD700; color: #FFD700; background: transparent; border-radius: 0px; margin-top: 10px; }
-    .stButton>button:hover { background: #FFD700; color: #0A0A0A; }
+    .stButton>button:hover { background: #FFD700 !important; color: #0A0A0A !important; }
     </style>
 """, unsafe_allow_html=True)
 
-# --- 3. 頂部導航欄 ---
+# ================= 🧭 4. 頂部導航欄 (新增小工具入口) =================
 st.markdown("""
     <div class='nav-bar'>
-        <a href='?page=main' class='nav-link'>🛸 戰略總部</a>
-        <a href='?page=history' class='nav-link'>📜 本站創建歷史</a>
-        <a href='?page=tutorial' class='nav-link'>🎓 教學區</a>
+        <a href='?page=main' target='_self' class='nav-link'>🛸 戰略總部</a>
+        <a href='?page=history' target='_self' class='nav-link'>📜 本站創建歷史</a>
+        <a href='?page=tutorial' target='_self' class='nav-link'>🎓 教學區</a>
+        <a href='?page=tool001' target='_self' class='nav-link'>🛠️ 戰術小工具</a>
     </div>
 """, unsafe_allow_html=True)
 
+# 取得目前的頁面參數
 current_page = st.query_params.get("page", "main")
 
-# ================= 分支：教學區主頁 (移交給 post1.py 控管) =================
+# ================= 🔀 5. 戰術核心路由邏輯 =================
+
+# 分支：教學區主頁
 if current_page == "tutorial":
     if post1 is not None:
         post1.show()
     else:
-        st.error("找不到教學總目錄檔案，請確認 tutorials/post1.py 是否存在。")
+        st.error("❌ 找不到教學總目錄檔案，請確認 `tutorials/post1.py` 是否存在且無語法錯誤。")
 
-# ================= 分支：第一篇教學文章 (防崩潰計算機) =================
+# 分支：第一篇教學文章
 elif current_page == "post2":
     if post2 is not None:
         post2.show()
     else:
-        st.error("找不到教學文章檔案，請確認 tutorials/post2.py 是否存在。")
+        st.error("❌ 找不到教學文章檔案，請確認 `tutorials/post2.py` 是否存在且無語法錯誤。")
 
-# ================= 分支：第二篇教學文章 (60秒極速Debug) =================
+# 分支：第二篇教學文章
 elif current_page == "post3":
     if post3 is not None:
         post3.show()
     else:
-        st.error("找不到教學文章檔案，請確認 tutorials/post3.py 是否存在。")
+        st.error("❌ 找不到教學文章檔案，請確認 `tutorials/post3.py` 是否存在且無語法錯誤。")
 
-# ================= 分支：歷史 (已移出至外部檔案) =================
+# 分支：歷史
 elif current_page == "history":
     if history_mod is not None:
         history_mod.show()
     else:
-        st.error("找不到歷史紀錄檔案，請確認 history/main.py 是否存在。")
+        st.error("❌ 找不到歷史紀錄檔案，請確認 `history/main.py` 是否存在且無語法錯誤。")
 
-# ================= 分支：主戰情室 (核心控制面板) =================
+# --- 新增分支：戰術小工具主控頁 ---
+elif current_page == "tool001":
+    if tool001_mod is not None:
+        tool001_mod.show()
+    else:
+        st.info("🛠️ **戰術小工具模組佈署中**")
+        st.write("此分頁已成功由 `index.py` 接管。請等待指揮官下達後續擴充命令以建立 `tool/tool001.py`。")
+
+# 分支：主戰情室
 else:
     try:
         st.image("logo.png", width=250)
-    except:
+    except Exception:
         pass
 
     st.markdown("""
         <div class='header-tag'>
             <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>
             <span class='english-title'>Luciffar AI: Dawnstar Command</span>
-            <span class='demo-tag'>0基礎驅動AI寫程式架站 :功能示範展示</span>
-            <span class='version-tag'>SYSTEM VERSION: 1.1.1</span>
+            <span class='demo-tag'>0基礎驅動AI寫程式架站：功能示範展示</span>
+            <span class='version-tag'>SYSTEM VERSION: 1.2.0</span>
         </div>
     """, unsafe_allow_html=True)
 
     st.write("#### 🛡️ 戰略指揮模組 (Active Command Deck)")
+    
     tools = [
         {"name": "決策之眼", "desc": "新聞搜尋", "eng": "Decision Eye", "url": "https://luciffar-thinktank.streamlit.app/"},
         {"name": "極光裁決", "desc": "YT 縮網址", "eng": "YT Linker", "url": "https://luciffar-yturl.streamlit.app/"},
@@ -133,11 +145,4 @@ else:
     cols = st.columns(2)
     for i, tool in enumerate(tools):
         with cols[i % 2]:
-            st.write(f"### {tool['name']}")
-            st.write(f"*{tool['desc']}*")
-            st.caption(tool['eng'])
-            st.link_button(f"EXECUTE", tool['url'], use_container_width=True)
-            st.write("") 
-
-st.markdown("---")
-st.caption("Dawnstar Command | Operational | All Systems Online")
+            st.markdown(f"### {tool

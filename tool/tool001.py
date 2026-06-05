@@ -42,8 +42,8 @@ def show():
         st.markdown("#### 🕹️ 外掛版射擊小遊戲")
         st.caption("📄 連結檔名：`ssa.py`")
         st.markdown("說明：\n"
-                    "• 操作：ASDW 方向控制 | 空白鍵連發 | ENTER 暫停 | ALT+ENTER 全螢幕\n"
-                    "• 特色：無限生命 | 一秒十發射速\n"
+                    "• 操作：ASDW 方向控制 | 空白鍵連發 | ENTER 暫停 | ALT+ENTER 全螢幕  \n"
+                    "• 特色：無限生命 | 一秒十發射速  \n"
                     "• 道具：白色寶石(子彈兩排) | 紅色寶石(子彈五排) | 黃色寶石(加速)")
         st.markdown("[[查看說明圖](https://i.urusai.cc/Yn2li.png)]")
     with col4:

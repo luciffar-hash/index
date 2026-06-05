@@ -1,1 +1,44 @@
+# VERSION: 1.0.0
+# LAST UPDATED: 2026-06-05
 
+import streamlit as st
+import os
+
+def show():
+    # --- 1. 版本號與標題常駐 ---
+    st.write("#### 🛠️ 戰術小工具總目錄 (Tactical Tool Arsenal)")
+    st.caption("MODULE VERSION: 1.0.0 | STATUS: ACTIVE")
+    st.markdown("---")
+
+    # --- 2. 工具下載矩陣 ---
+    st.write("### 🛸 獨立版腳本下載區")
+    st.write("*點擊下方按鈕即可直接下載對應的 Python 腳本至在地端執行。*")
+    st.write("")
+
+    # 設定小工具的實體路徑 (指向 tool/meme.py)
+    meme_file_path = os.path.join("tool", "meme.py")
+
+    # --- 項目一：梗圖產生器 ---
+    col1, col2 = st.columns([3, 1])
+    
+    with col1:
+        st.markdown("#### 🎯 梗圖產生器")
+        st.caption("📄 連結檔名：`meme.py` │ 說明：0基礎快速合成網路熱門迷因與戰情梗圖。")
+        
+    with col2:
+        # 安全讀取檔案並提供下載
+        try:
+            with open(meme_file_path, "rb") as file:
+                st.download_button(
+                    label="DOWNLOAD",
+                    data=file,
+                    file_name="meme.py",
+                    mime="text/x-python",
+                    use_container_width=True
+                )
+        except FileNotFoundError:
+            # 若 meme.py 尚未建立，按鈕轉為警告提示，防止系統崩潰
+            st.error("檔案佈署中")
+
+    st.markdown("---")
+    st.caption("Luciffar Intelligence Tank | Tool Module Loader")

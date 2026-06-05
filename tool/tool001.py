@@ -9,9 +9,10 @@ def show():
     st.write("#### 🛠️ 戰術小工具總目錄 (Tactical Tool Arsenal)")
     st.caption("MODULE VERSION: 1.0.1 | STATUS: ACTIVE")
     st.markdown("---")
-    st.info("ℹ️ **操作建議：**\n\n"
+    st.info("ℹ️ **操作建議與規範：**\n\n"
             "1. 本地端運行如有缺任何插件，請直接截圖詢問 AI 如何 CMD 安裝。\n"
-            "2. 程式碼如有疑慮，可先貼入 AI 請 AI 分析安全性。")
+            "2. 程式碼如有疑慮，可先貼入 AI 請 AI 分析安全性。\n"
+            "3. 本工具受著作權保護，嚴禁竄改署名或假冒作者進行二次發佈。")
     # --- 2. 工具下載矩陣 ---
     st.write("### 🛸 獨立版腳本下載區")
     st.write("*點擊下方按鈕即可直接下載對應的 Python 腳本至在地端執行。*")
@@ -45,3 +46,4 @@ def show():
 
     st.markdown("---")
     st.caption("Luciffar Intelligence Tank | Tool Module Loader")
+    st.caption("Luciffar Intelligence Tank | © 2026 Luciffar. All rights reserved.")

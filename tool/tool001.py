@@ -145,4 +145,12 @@ else:
     cols = st.columns(2)
     for i, tool in enumerate(tools):
         with cols[i % 2]:
-            st.markdown(f"### {tool
+            st.markdown(f"### {tool['name']}")
+            st.markdown(f"*{tool['desc']}*")
+            st.caption(tool['eng'])
+            st.link_button("EXECUTE", tool['url'], use_container_width=True)
+            st.write("") 
+
+# ================= 🏁 6. 全域頁尾 =================
+st.markdown("---")
+st.caption("Dawnstar Command | Operational | All Systems Online")

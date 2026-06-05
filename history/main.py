@@ -1,6 +1,6 @@
 #版號 V1.6.0
 # history/main.py
-import streamlit st
+import streamlit as st
 
 def show():
     st.markdown("<h1 style='text-align: center;'>📜 本站創建歷史</h1>", unsafe_allow_html=True)

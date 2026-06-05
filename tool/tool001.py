@@ -1,4 +1,4 @@
-# VERSION: 1.0.0
+# VERSION: 1.0.1
 # LAST UPDATED: 2026-06-05
 
 import streamlit as st
@@ -7,7 +7,7 @@ import os
 def show():
     # --- 1. 版本號與標題常駐 ---
     st.write("#### 🛠️ 戰術小工具總目錄 (Tactical Tool Arsenal)")
-    st.caption("MODULE VERSION: 1.0.0 | STATUS: ACTIVE")
+    st.caption("MODULE VERSION: 1.0.1 | STATUS: ACTIVE")
     st.markdown("---")
 
     # --- 2. 工具下載矩陣 ---
@@ -18,12 +18,13 @@ def show():
     # 設定小工具的實體路徑 (指向 tool/meme.py)
     meme_file_path = os.path.join("tool", "meme.py")
 
-    # --- 項目一：梗圖產生器 ---
+    # --- 項目一：路西法智庫梗圖產生器 ---
     col1, col2 = st.columns([3, 1])
     
     with col1:
-        st.markdown("#### 🎯 梗圖產生器")
+        st.markdown("#### 🎯 路西法智庫梗圖產生器")
         st.caption("📄 連結檔名：`meme.py` │ 說明：0基礎快速合成網路熱門迷因與戰情梗圖。")
+        st.markdown("[[查看說明圖](https://i.urusai.cc/6XH0u.png)]")
         
     with col2:
         # 安全讀取檔案並提供下載

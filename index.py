@@ -1,23 +1,9 @@
-# VERSION: 1.2.1
-# LAST UPDATED: 2026-06-06
+# VERSION: 1.2.0
+# LAST UPDATED: 2026-06-05
 
 import streamlit as st
 
 # ================= 🛡️ 1. 頁面基本配置 =================
-# 隱藏式注入 Google 擁有權驗證中繼標記至 <head> 區段
-st.components.v1.html(
-    """
-    <script>
-        var meta = document.createElement('meta');
-        meta.name = 'google-site-verification';
-        meta.content = 'rAX5QpLFwpPjJsmY76a74DudNUk44neuhlch83FWQ_A';
-        document.head.appendChild(meta);
-    </script>
-    """,
-    height=0,
-    width=0
-)
-
 st.set_page_config(
     page_title="Luciffar AI: Dawnstar Command", 
     layout="centered",
@@ -143,7 +129,7 @@ else:
             <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>
             <span class='english-title'>Luciffar AI: Dawnstar Command</span>
             <span class='demo-tag'>0基礎驅動AI寫程式架站：功能示範展示</span>
-            <span class='version-tag'>SYSTEM VERSION: 1.2.1</span>
+            <span class='version-tag'>SYSTEM VERSION: 1.2.0</span>
         </div>
     """, unsafe_allow_html=True)
 

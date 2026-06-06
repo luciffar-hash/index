@@ -1,4 +1,4 @@
-# VERSION: v1.3.2
+# VERSION: v1.3.3
 # LAST UPDATED: 2026-06-06
 
 import streamlit as st
@@ -7,7 +7,7 @@ import os
 def show():
     # --- 1. 版本號與標題常駐 ---
     st.write("#### 🛠️ 戰術小工具總目錄 (Tactical Tool Arsenal)")
-    st.caption("MODULE VERSION: v1.3.2 | STATUS: ACTIVE")
+    st.caption("MODULE VERSION: v1.3.3 | STATUS: ACTIVE")
     st.markdown("---")
     st.info("ℹ️ **操作建議與規範：**\n\n"
             "1. 本地端運行如有缺任何插件，請直接截圖詢問 AI 如何 CMD 安裝。\n"
@@ -24,7 +24,7 @@ def show():
     col1, col2 = st.columns([3, 1])
     with col1:
         st.markdown("#### <span style='color:#00FF41'>🎯 路西法智庫梗圖產生器</span>", unsafe_allow_html=True)
-        st.caption("📄 連結檔名：`meme.py` │ 說明：0基礎快速合成網路熱門迷因與戰情梗圖。")
+        st.caption("📄 連結檔名：`meme.py` │ 說明：0基礎快速合成網路熱門迷因與戰情梗圖。 │ 上架時間：2026-06-05")
         st.markdown("[[查看說明圖](https://i.urusai.cc/6XH0u.png)]")
     with col2:
         try:
@@ -40,7 +40,7 @@ def show():
     col3, col4 = st.columns([3, 1])
     with col3:
         st.markdown("#### <span style='color:#00FF41'>🕹️ 外掛版射擊小遊戲</span>", unsafe_allow_html=True)
-        st.caption("📄 連結檔名：`ssa.py`")
+        st.caption("📄 連結檔名：`ssa.py` │ 上架時間：2026-06-06")
         st.markdown("說明：  \n"
                     "• 操作：ASDW 方向控制 | 空白鍵連發 | ENTER 暫停 | ALT+ENTER 全螢幕  \n"
                     "• 特色：無敵 | 一秒十發子彈  \n"
@@ -48,7 +48,7 @@ def show():
         st.markdown("[[查看說明圖](https://i.urusai.cc/Yn2li.png)]")
         
         # 使用 expander 收折教學內容
-        with st.expander("✨ 點擊展開：給未來開發者的程式啟蒙教學"):
+        with st.expander("✨ 點擊展開：給未來開發者的程式啟盟教學"):
             st.markdown("""
 :red[這是一份為小朋友或跟我一樣沒有任何程式基礎的人量身打造的程式啟盟教學，強調「創作者」的權力。]
 

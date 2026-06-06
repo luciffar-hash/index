@@ -1,4 +1,4 @@
-# VERSION:v1.3.0
+# VERSION: v1.2.1
 # LAST UPDATED: 2026-06-06
 
 import streamlit as st
@@ -7,7 +7,7 @@ import os
 def show():
     # --- 1. 版本號與標題常駐 ---
     st.write("#### 🛠️ 戰術小工具總目錄 (Tactical Tool Arsenal)")
-    st.caption("MODULE VERSION:v1.3.0 | STATUS: ACTIVE")
+    st.caption("MODULE VERSION: v1.2.1 | STATUS: ACTIVE")
     st.markdown("---")
     st.info("ℹ️ **操作建議與規範：**\n\n"
             "1. 本地端運行如有缺任何插件，請直接截圖詢問 AI 如何 CMD 安裝。\n"
@@ -23,7 +23,8 @@ def show():
     meme_file_path = os.path.join("tool", "meme.py")
     col1, col2 = st.columns([3, 1])
     with col1:
-        st.markdown("#### 🎯 路西法智庫梗圖產生器")
+        # 修改標題顏色為綠色
+        st.markdown("#### <span style='color:green'>🎯 路西法智庫梗圖產生器</span>", unsafe_allow_html=True)
         st.caption("📄 連結檔名：`meme.py` │ 說明：0基礎快速合成網路熱門迷因與戰情梗圖。")
         st.markdown("[[查看說明圖](https://i.urusai.cc/6XH0u.png)]")
     with col2:
@@ -39,7 +40,8 @@ def show():
     ssa_file_path = os.path.join("tool", "ssa.py")
     col3, col4 = st.columns([3, 1])
     with col3:
-        st.markdown("#### 🕹️ 外掛版射擊小遊戲")
+        # 修改標題顏色為綠色
+        st.markdown("#### <span style='color:green'>🕹️ 外掛版射擊小遊戲</span>", unsafe_allow_html=True)
         st.caption("📄 連結檔名：`ssa.py`")
         st.markdown("說明：  \n"
                     "• 操作：ASDW 方向控制 | 空白鍵連發 | ENTER 暫停 | ALT+ENTER 全螢幕  \n"
@@ -48,7 +50,7 @@ def show():
         st.markdown("[[查看說明圖](https://i.urusai.cc/Yn2li.png)]")
         
         st.markdown("""
-這是一份為小朋友量身打造的程式啟蒙教學，強調「創作者」的權力。
+這是一份為小朋友量身打造的程式啟盟教學，強調「創作者」的權力。
 
 成為遊戲的創世神：動手寫出你的專屬射擊遊戲
 你是否玩膩了那些一碰到敵人就會「Game Over」的遊戲？市面上的遊戲為了挑戰你，設定了重重限制，但在這裡，規則由你說了算。

@@ -1,5 +1,5 @@
-# VERSION: 1.2.0
-# LAST UPDATED: 2026-06-05
+# VERSION: 1.4.0
+# LAST UPDATED: 2026-06-06
 
 import streamlit as st
 
@@ -8,6 +8,14 @@ st.set_page_config(
     page_title="Luciffar AI: Dawnstar Command", 
     layout="centered",
     page_icon="⭐"
+)
+
+# 注入 Google Search Console 驗證標記
+st.components.v1.html(
+    """
+    <meta name="google-site-verification" content="rAX5QpLFwpPjJsrY76a74DudNUk44neuhlch83FWQ_A" />
+    """,
+    height=0,
 )
 
 # ================= 📦 2. 安全動態掛載外部獨立模組 =================
@@ -129,7 +137,7 @@ else:
             <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>
             <span class='english-title'>Luciffar AI: Dawnstar Command</span>
             <span class='demo-tag'>0基礎驅動AI寫程式架站：功能示範展示</span>
-            <span class='version-tag'>SYSTEM VERSION: 1.2.0</span>
+            <span class='version-tag'>SYSTEM VERSION: 1.4.0</span>
         </div>
     """, unsafe_allow_html=True)
 

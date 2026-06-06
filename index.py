@@ -1,7 +1,16 @@
-# VERSION: 1.2.0
-# LAST UPDATED: 2026-06-05
+# VERSION: 1.2.2
+# LAST UPDATED: 2026-06-06
 
 import streamlit as st
+
+# ================= 🛡️ 0. Google Search Console 驗證專屬通道 =================
+# 取得目前的頁面參數
+current_page = st.query_params.get("page", "main")
+
+# 攔截 Google 驗證請求：當網址為 ?page=google59a00902dc2ee317.html 時精準回應
+if current_page == "google59a00902dc2ee317.html":
+    st.write("google-site-verification: google59a00902dc2ee317.html")
+    st.stop()  # 立刻中斷後續所有程式碼執行，確保頁面純淨
 
 # ================= 🛡️ 1. 頁面基本配置 =================
 st.set_page_config(
@@ -26,7 +35,7 @@ post1 = safe_import("tutorials.post1")
 post2 = safe_import("tutorials.post2")
 post3 = safe_import("tutorials.post3")
 
-# --- 新增：小工具控制模組 ---
+# --- 小工具控制模組 ---
 tool001_mod = safe_import("tool.tool001")
 
 # ================= 🎨 3. 戰情室全域 CSS 最佳化 =================
@@ -76,9 +85,6 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# 取得目前的頁面參數
-current_page = st.query_params.get("page", "main")
-
 # ================= 🔀 5. 戰術核心路由邏輯 =================
 
 # 分支：教學區主頁
@@ -109,7 +115,7 @@ elif current_page == "history":
     else:
         st.error("❌ 找不到歷史紀錄檔案，請確認 `history/main.py` 是否存在且無語法錯誤。")
 
-# --- 新增分支：戰術小工具主控頁 ---
+# 戰術小工具主控頁
 elif current_page == "tool001":
     if tool001_mod is not None:
         tool001_mod.show()
@@ -129,7 +135,7 @@ else:
             <span class='chinese-title'>路西法智庫:AI破曉晨星戰略指揮總部</span>
             <span class='english-title'>Luciffar AI: Dawnstar Command</span>
             <span class='demo-tag'>0基礎驅動AI寫程式架站：功能示範展示</span>
-            <span class='version-tag'>SYSTEM VERSION: 1.2.0</span>
+            <span class='version-tag'>SYSTEM VERSION: 1.2.2</span>
         </div>
     """, unsafe_allow_html=True)
 

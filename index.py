@@ -1,4 +1,4 @@
-# VERSION: 1.2.1
+# VERSION: 1.2.2
 # LAST UPDATED: 2026-06-06
 
 import streamlit as st
@@ -10,12 +10,15 @@ st.set_page_config(
     page_icon="⭐"
 )
 
-# 注入 Google Search Console 驗證中繼標記
-st.markdown("""
-    <head>
-        <meta name="google-site-verification" content="rAX5QpLFwpPjJsmY76a74DudNUk44neuhlch83FWQ_A" />
-    </head>
-""", unsafe_allow_html=True)
+# 透過 html 元素直接切入，確保標記能被 Google 爬蟲直接抓取
+st.components.v1.html("""
+    <script>
+        var meta = document.createElement('meta');
+        meta.name = 'google-site-verification';
+        meta.content = 'rAX5QpLFwpPjJsmY76a74DudNUk44neuhlch83FWQ_A';
+        parent.document.getElementsByTagName('head')[0].appendChild(meta);
+    </script>
+""", height=0)
 
 # ================= 📦 2. 安全動態掛載外部獨立模組 =================
 def safe_import(module_path):

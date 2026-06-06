@@ -1,4 +1,4 @@
-# VERSION: 1.2.2
+# VERSION: 1.2.3
 # LAST UPDATED: 2026-06-06
 
 import streamlit as st
@@ -10,13 +10,14 @@ st.set_page_config(
     page_icon="⭐"
 )
 
-# 透過 html 元素直接切入，確保標記能被 Google 爬蟲直接抓取
+# 透過 Streamlit 專用元件載入外部驗證/追蹤腳本，繞過前端沙盒限制
 st.components.v1.html("""
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-rAX5QpLFwp"></script>
     <script>
-        var meta = document.createElement('meta');
-        meta.name = 'google-site-verification';
-        meta.content = 'rAX5QpLFwpPjJsmY76a74DudNUk44neuhlch83FWQ_A';
-        parent.document.getElementsByTagName('head')[0].appendChild(meta);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-rAX5QpLFwp');
     </script>
 """, height=0)
 

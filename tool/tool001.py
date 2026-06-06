@@ -24,7 +24,7 @@ def show():
     col1, col2 = st.columns([3, 1])
     with col1:
         # 修改標題顏色為綠色
-        st.markdown("#### <span style='color:#39FF14'>🎯 路西法智庫梗圖產生器</span>", unsafe_allow_html=True)
+        st.markdown("#### <span style='color:#00FF41'>🎯 路西法智庫梗圖產生器</span>", unsafe_allow_html=True)
         st.caption("📄 連結檔名：`meme.py` │ 說明：0基礎快速合成網路熱門迷因與戰情梗圖。")
         st.markdown("[[查看說明圖](https://i.urusai.cc/6XH0u.png)]")
     with col2:
@@ -41,7 +41,7 @@ def show():
     col3, col4 = st.columns([3, 1])
     with col3:
         # 修改標題顏色為綠色
-        st.markdown("#### <span style='color:#39FF14'>🕹️ 外掛版射擊小遊戲</span>", unsafe_allow_html=True)
+        st.markdown("#### <span style='color:#00FF41'>🕹️ 外掛版射擊小遊戲</span>", unsafe_allow_html=True)
         st.caption("📄 連結檔名：`ssa.py`")
         st.markdown("說明：  \n"
                     "• 操作：ASDW 方向控制 | 空白鍵連發 | ENTER 暫停 | ALT+ENTER 全螢幕  \n"

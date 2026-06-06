@@ -1,5 +1,5 @@
-# VERSION: 1.2.0
-# LAST UPDATED: 2026-06-05
+# VERSION: 1.2.1
+# LAST UPDATED: 2026-06-06
 
 import streamlit as st
 
@@ -9,6 +9,13 @@ st.set_page_config(
     layout="centered",
     page_icon="⭐"
 )
+
+# 注入 Google Search Console 驗證中繼標記
+st.markdown("""
+    <head>
+        <meta name="google-site-verification" content="rAX5QpLFwpPjJsmY76a74DudNUk44neuhlch83FWQ_A" />
+    </head>
+""", unsafe_allow_html=True)
 
 # ================= 📦 2. 安全動態掛載外部獨立模組 =================
 def safe_import(module_path):

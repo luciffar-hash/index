@@ -1,4 +1,4 @@
-# VERSION: v1.3.3
+# VERSION: v1.3.5
 # LAST UPDATED: 2026-06-06
 
 import streamlit as st
@@ -7,7 +7,7 @@ import os
 def show():
     # --- 1. 版本號與標題常駐 ---
     st.write("#### 🛠️ 戰術小工具總目錄 (Tactical Tool Arsenal)")
-    st.caption("MODULE VERSION: v1.3.3 | STATUS: ACTIVE")
+    st.caption("MODULE VERSION: v1.3.5 | STATUS: ACTIVE")
     st.markdown("---")
     st.info("ℹ️ **操作建議與規範：**\n\n"
             "1. 本地端運行如有缺任何插件，請直接截圖詢問 AI 如何 CMD 安裝。\n"

@@ -1,5 +1,5 @@
-# VERSION: 1.2.3
-# LAST UPDATED: 2026-06-06
+# VERSION: 1.2.0
+# LAST UPDATED: 2026-06-05
 
 import streamlit as st
 
@@ -9,17 +9,6 @@ st.set_page_config(
     layout="centered",
     page_icon="⭐"
 )
-
-# 透過 Streamlit 專用元件載入外部驗證/追蹤腳本，繞過前端沙盒限制
-st.components.v1.html("""
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-rAX5QpLFwp"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-rAX5QpLFwp');
-    </script>
-""", height=0)
 
 # ================= 📦 2. 安全動態掛載外部獨立模組 =================
 def safe_import(module_path):

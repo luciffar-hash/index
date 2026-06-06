@@ -24,7 +24,7 @@ def show():
     col1, col2 = st.columns([3, 1])
     with col1:
         st.markdown("#### <span style='color:#00FF41'>🎯 路西法智庫梗圖產生器</span>", unsafe_allow_html=True)
-        st.caption("📄 連結檔名：`meme.py` │ 說明：0基礎快速合成網路熱門迷因與戰情梗圖。 │ 上架時間：2026-06-05")
+        st.caption("📄 連結檔名：`meme.py` │ 說明：0基礎快速合成網路熱門迷因與戰情梗圖。\n │ 上架時間：2026-06-05")
         st.markdown("[[查看說明圖](https://i.urusai.cc/6XH0u.png)]")
     with col2:
         try:

@@ -1,5 +1,5 @@
-# VERSION: v1.3.5
-# LAST UPDATED: 2026-06-06
+# VERSION: v1.3.6
+# LAST UPDATED: 2026-06-14
 
 import streamlit as st
 import os
@@ -7,7 +7,7 @@ import os
 def show():
     # --- 1. 版本號與標題常駐 ---
     st.write("#### 🛠️ 戰術小工具總目錄 (Tactical Tool Arsenal)")
-    st.caption("MODULE VERSION: v1.3.5 | STATUS: ACTIVE")
+    st.caption("MODULE VERSION: v1.3.6 | STATUS: ACTIVE")
     st.markdown("---")
     st.info("ℹ️ **操作建議與規範：**\n\n"
             "1. 本地端運行如有缺任何插件，請直接截圖詢問 AI 如何 CMD 安裝。\n"
@@ -79,6 +79,25 @@ def show():
         try:
             with open(ssa_file_path, "rb") as file:
                 st.download_button(label="DOWNLOAD", data=file, file_name="ssa.py", mime="text/x-python", use_container_width=True)
+        except FileNotFoundError:
+            st.error("檔案佈署中")
+
+    st.markdown("---")
+
+    # --- 項目三：路西法智庫-網站自動喚醒系統 ---
+    v5_file_path = os.path.join("tool", "v5autovt.py")
+    col5, col6 = st.columns([3, 1])
+    with col5:
+        st.markdown("#### <span style='color:#00FF41'>🤖 路西法智庫-網站自動喚醒系統</span>", unsafe_allow_html=True)
+        st.caption("📄 連結檔名：`v5autovt.py` │ 上架時間：2026-06-14")
+        st.markdown("說明：  \n"
+                    "• 特色：1.可自動訪問列表網站 2.可自動點擊 streamlit [Yes, get this app back up!] 自動喚醒 3.可自動讀取列表 config.json（第一次執行後會將列表網站存在這裡）  \n"
+                    "• 備註：您現在可以直接在圖形介面上手動更改循環時間（支援小數點，例如輸入 0.5 代表半小時，輸入 5 代表 5 小時）。  \n"
+                    "• 為什麼要寫這個程式？嘗試了各種網路上的自動訪問方案，最後網站還是會凍結，就決定用自己的電腦自動訪問避免網站被凍結了。預設 n 小時會自動執行一次 `v5autovt.py` 一直開著不要關閉就可以了。")
+    with col6:
+        try:
+            with open(v5_file_path, "rb") as file:
+                st.download_button(label="DOWNLOAD", data=file, file_name="v5autovt.py", mime="text/x-python", use_container_width=True)
         except FileNotFoundError:
             st.error("檔案佈署中")
 

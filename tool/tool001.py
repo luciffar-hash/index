@@ -1,4 +1,4 @@
-# VERSION: v1.3.6
+# VERSION: v1.3.7
 # LAST UPDATED: 2026-06-14
 
 import streamlit as st
@@ -7,7 +7,7 @@ import os
 def show():
     # --- 1. 版本號與標題常駐 ---
     st.write("#### 🛠️ 戰術小工具總目錄 (Tactical Tool Arsenal)")
-    st.caption("MODULE VERSION: v1.3.6 | STATUS: ACTIVE")
+    st.caption("MODULE VERSION: v1.3.7 | STATUS: ACTIVE")
     st.markdown("---")
     st.info("ℹ️ **操作建議與規範：**\n\n"
             "1. 本地端運行如有缺任何插件，請直接截圖詢問 AI 如何 CMD 安裝。\n"
@@ -94,6 +94,7 @@ def show():
                     "• 特色：1.可自動訪問列表網站 2.可自動點擊 streamlit [Yes, get this app back up!] 自動喚醒 3.可自動讀取列表 config.json（第一次執行後會將列表網站存在這裡）  \n"
                     "• 備註：您現在可以直接在圖形介面上手動更改循環時間（支援小數點，例如輸入 0.5 代表半小時，輸入 5 代表 5 小時）。  \n"
                     "• 為什麼要寫這個程式？嘗試了各種網路上的自動訪問方案，最後網站還是會凍結，就決定用自己的電腦自動訪問避免網站被凍結了。預設 n 小時會自動執行一次 `v5autovt.py` 一直開著不要關閉就可以了。")
+        st.markdown("[[查看說明圖](https://i.urusai.cc/hmimX.png)]")
     with col6:
         try:
             with open(v5_file_path, "rb") as file:

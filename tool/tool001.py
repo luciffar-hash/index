@@ -91,7 +91,7 @@ def show():
         st.markdown("#### <span style='color:#00FF41'>🤖 路西法智庫-網站自動喚醒系統</span>", unsafe_allow_html=True)
         st.caption("📄 連結檔名：`v5autovt.py` │ 上架時間：2026-06-14")
         st.markdown("說明：  \n"
-                    "• 特色：1.可自動訪問列表網站 2.可自動點擊 streamlit [Yes, get this app back up!] 自動喚醒 3.可自動讀取列表 config.json（第一次執行後會將列表網站存在這裡）  \n"
+                    "• 特色：1.可自動訪問列表網站  \n 2.可自動點擊 streamlit [Yes, get this app back up!] 自動喚醒  \n 3.可自動讀取列表 config.json（第一次執行後會將列表網站存在這裡）  \n"
                     "• 備註：您現在可以直接在圖形介面上手動更改循環時間（支援小數點，例如輸入 0.5 代表半小時，輸入 5 代表 5 小時）。  \n"
                     "• 為什麼要寫這個程式？嘗試了各種網路上的自動訪問方案，最後網站還是會凍結，就決定用自己的電腦自動訪問避免網站被凍結了。預設 n 小時會自動執行一次 `v5autovt.py` 一直開著不要關閉就可以了。")
         st.markdown("[[查看說明圖](https://i.urusai.cc/hmimX.png)]")
